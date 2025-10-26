@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cordero Services</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="contact-info">
+                <span>
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.125 15C12.3889 15 10.6736 14.6217 8.97917 13.865C7.28472 13.1083 5.74306 12.0353 4.35417 10.6458C2.96528 9.25639 1.8925 7.71472 1.13583 6.02083C0.379167 4.32694 0.000555556 2.61167 0 0.875C0 0.625 0.0833333 0.416667 0.25 0.25C0.416667 0.0833333 0.625 0 0.875 0H4.25C4.44444 0 4.61806 0.066111 4.77083 0.198333C4.92361 0.330555 5.01389 0.486667 5.04167 0.666667L5.58333 3.58333C5.61111 3.80556 5.60417 3.99306 5.5625 4.14583C5.52083 4.29861 5.44444 4.43056 5.33333 4.54167L3.3125 6.58333C3.59028 7.09722 3.92 7.59361 4.30167 8.0725C4.68333 8.55139 5.10361 9.01333 5.5625 9.45833C5.99306 9.88889 6.44444 10.2883 6.91667 10.6567C7.38889 11.025 7.88889 11.3617 8.41667 11.6667L10.375 9.70833C10.5 9.58333 10.6633 9.48972 10.865 9.4275C11.0667 9.36528 11.2644 9.34778 11.4583 9.375L14.3333 9.95833C14.5278 10.0139 14.6875 10.1147 14.8125 10.2608C14.9375 10.4069 15 10.57 15 10.75V14.125C15 14.375 14.9167 14.5833 14.75 14.75C14.5833 14.9167 14.375 15 14.125 15Z" fill="black"/>
+                    </svg>
+                </span>
+                <span>099 315 7621 / 099 489 6810</span>
+            </div>
+            <div class="contact-info">
+                    <a href="mailto:ofttarqcordero@hotmail.com,alexcordero67@hotmail.com">
+                    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 4L10 9L2 4V2L10 7L18 2M18 0H2C0.89 0 0 0.89 0 2V14C0 14.5304 0.210714 15.0391 0.585786 15.4142C0.960859 15.7893 1.46957 16 2 16H18C18.5304 16 19.0391 15.7893 19.4142 15.4142C19.7893 15.0391 20 14.5304 20 14V2C20 1.46957 19.7893 0.960859 19.4142 0.585786C19.0391 0.210714 18.5304 0 18 0Z" fill="black"/>
+                    </svg>
+                    <span>ofttarqcordero@hotmail.com / alexcordero67@hotmail.com</span>
+                    </a>
+            </div>
+            <div class="contact-info">
+                    <a href="https://www.tiktok.com/@your-tiktok-id" target="_blank">
+                    <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.44 2.82C11.7566 2.03953 11.3799 1.0374 11.38 0H8.29V12.4C8.26666 13.0712 7.98352 13.7071 7.50031 14.1735C7.01709 14.6399 6.3716 14.9004 5.7 14.9C4.28 14.9 3.1 13.74 3.1 12.3C3.1 10.58 4.76 9.29 6.47 9.82V6.66C3.02 6.2 0 8.88 0 12.3C0 15.63 2.76 18 5.69 18C8.83 18 11.38 15.45 11.38 12.3V6.01C12.633 6.90985 14.1374 7.39265 15.68 7.39V4.3C15.68 4.3 13.8 4.39 12.44 2.82Z" fill="black"/>
+                    </svg>
+                    <span>Tiktok-link-id</span>
+                    </a>
+            </div>
+        </div>
+    </div>
+
+        <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <img src="/images/Logo.png" alt="">
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio" class="active">Inicio</a></li>
+                <li><a href="#empresas">OFFTARQ</a></li>
+                <li><a href="#inmobiliaria">INMOBILIARIA</a></li>
+                <li><a href="#contacto" class="btn-primary">Pagos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+        <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Bienvenido a<br>Cordero <span class="highlight">Services</span></h1>
+                <p>Tu centro profesional unificado que conecta la excelencia a través de múltiples empresas. Reunimos innovación, calidad y confianza en una plataforma integral.</p>
+                <div class="hero-buttons">
+                    <a href="#empresas" class="btn-primary">Explora Nuestras Empresas 
+                        <span><svg width="12" height="12" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 18L10 10L2 2" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                        </span></a>
+
+                    <a href="#contacto" class="btn-secondary">Contáctanos</a>
+                </div>
+            </div>
+            <div class="hero-image">
+               <img src="/images/HeroImage.png" alt="">
+            </div>
+        </div>
+    </section>
+</body>
+</html>
