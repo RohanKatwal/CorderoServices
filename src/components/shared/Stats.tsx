@@ -1,26 +1,17 @@
-const Stats = () => {
+import { statsContent } from "@/constants";
+import { pageName } from "./HeroSection";
+
+const Stats = ({pageName}: pageName) => {
+  const data = statsContent[pageName];
     return (
       <section className="stats">
         <div className="stats-content container">
-          <div className="stat-item">
-            <div className="stat-number">2+</div>
-            <div className="stat-label">Empresas</div>
-          </div>
-          <div className="line"></div>
-          <div className="stat-item">
-            <div className="stat-number">100%</div>
-            <div className="stat-label">Profesional</div>
-          </div>
-          <div className="line"></div>
-          <div className="stat-item">
-            <div className="stat-number">24/7</div>
-            <div className="stat-label">Soporte</div>
-          </div>
-          <div className="line"></div>
-          <div className="stat-item">
-            <div className="stat-number">∞</div>
-            <div className="stat-label">Potencial</div>
-          </div>
+          {data.map(item => (
+              <div className="stat-item" key={item.id}>
+                <div className={`${pageName === "corderoservices" ? "lastStats" : ""} stat-number`}>{item.value}</div>
+                <div className="stat-label">{item.title}</div>
+              </div>
+          ))}
         </div>
       </section>
     );

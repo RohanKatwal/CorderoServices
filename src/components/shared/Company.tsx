@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const Company = () => {
@@ -17,7 +18,7 @@ const Company = () => {
         <div className="companies-grid">
           <div className="company-card">
             <div className="company-logo">
-              <img src="/images/OFFTARQLogo.png" alt="" />
+              <Image src="/images/OFFTARQLogo.png" width={173} height={143} alt="offtarq logo" />
             </div>
             <h2>OFFTARQ</h2>
             <p>
@@ -31,7 +32,7 @@ const Company = () => {
 
           <div className="company-card">
             <div className="company-logo">
-              <img src="/images/ICLogo.png" alt="" />
+              <Image src="/images/ICLogo.png" width={213} height={143} alt="inmobiliaria logo" />
             </div>
             <h2>IC Real Estate</h2>
             <p>

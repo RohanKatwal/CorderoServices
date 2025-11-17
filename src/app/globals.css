@@ -254,18 +254,18 @@ a span {
   border-radius: 10px;
   display: grid;
   place-content: end;
+  overflow: hidden;
 }
 
 .hero-image img {
-  width: 430px;
   object-fit: cover;
-  transition: transform 0.5s;
 }
 
 /* Stats Section */
 .stats {
   background-color: rgba(255, 255, 255, 0.05);
   padding: 48px 0;
+  margin-top: 80px;
 }
 
 .stats-content {
@@ -283,9 +283,27 @@ a span {
   margin-bottom: 24px;
 }
 
-.stat-item:last-child .stat-number {
+.stat-item:last-child .lastStats {
   font-size: 64px;
   line-height: 40px;
+}
+
+.stat-item {
+  position: relative;
+}
+
+.stat-item::after {
+  content: "";
+  position: absolute;
+  height: 80px;
+  width: 1px;
+  right: -140px;
+  top: 10%;
+  background-color: #ffffff2e;
+}
+
+.stat-item:last-child::after {
+  display: none;
 }
 
 .stat-label {
@@ -339,9 +357,7 @@ a span {
 }
 
 .company-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 10px;
 }
 
@@ -578,16 +594,12 @@ a span {
     width: auto;
   }
 
-  .hero-image img {
-    width: auto;
+  .hero-image {
+    width: 100%;
   }
 
   .hero-buttons a {
     font-size: 18px;
-  }
-
-  .hero-image {
-    width: 300px;
   }
 
   .contact-content {
@@ -605,7 +617,7 @@ a span {
 
 @media (max-width: 1024px) {
   .hero {
-    height: 100vh;
+    height: auto;
     margin-top: 80px;
   }
   .hero-content {
@@ -625,7 +637,7 @@ a span {
     text-align: center;
   }
 
-  .stats-content .line {
+  .stat-item::after {
     display: none;
   }
 
@@ -700,17 +712,9 @@ a span {
     gap: 12px;
   }
 
-  .stats{
-    margin-top: 80px;
-  }
-
   .hero-text p {
     font-size: 14px;
     line-height: 24px;
-  }
-
-  .hero-image img {
-    width: 100%;
   }
 
   .hero-buttons {

@@ -1,13 +1,21 @@
 import Link from "next/link";
+import Image from "next/image";
+import { heroSectionContent } from "@/constants";
 
-const HeroSection = () => {
+export interface pageName {
+  pageName: "corderoservices" | "inmobiliaria";
+}
+
+const HeroSection = ({ pageName }: pageName) => {
+  const data = heroSectionContent[pageName];
   return (
     <section className="hero container" id="inicio">
       <div className="hero-content">
         <div className="hero-text">
           <h1>
-            Bienvenido a <br /> Cordero
-            <span className="highlight"> Services </span>
+            {data.title}
+            {pageName === "corderoservices" && (<><br/>Cordero</>)}
+            {data.highlight && <span className="highlight"> Services </span>}
           </h1>
           <p>
             Tu centro profesional unificado que conecta la excelencia a través
@@ -16,16 +24,21 @@ const HeroSection = () => {
           </p>
           <div className="hero-buttons">
             <Link href="#company" className="btn-primary">
-              Explora Nuestras Empresas
+              {data.btn1}
             </Link>
 
             <Link href="#contact" className="btn-secondary">
-              Contáctanos
+              {data.btn2}
             </Link>
           </div>
         </div>
         <div className="hero-image">
-          <img src="/images/HeroImage.png" alt="logo" />
+          <Image
+            src={data.img}
+            width={402}
+            height={510}
+            alt="hero-img"
+          />
         </div>
       </div>
     </section>
