@@ -1,3 +1,4 @@
+import Contact from "@/components/shared/Contact";
 import HeroSection from "@/components/shared/HeroSection";
 import Navbar from "@/components/shared/Navbar";
 import Stats from "@/components/shared/Stats";
@@ -15,6 +16,7 @@ const inmobiliaria = () => {
             <Navbar pageName="inmobiliaria" />
             <HeroSection pageName="inmobiliaria" />
             <Stats pageName="inmobiliaria" />
+            <Contact />
         </>
     );
 }

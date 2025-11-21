@@ -90,7 +90,7 @@ const Navbar = ({ pageName }: pageName) => {
             </li>
           ))}
           <li className="nav-item">
-            <Link href="#" className="btn-primary link">
+            <Link href="/payments" className="btn-primary link">
               Payments
             </Link>
           </li>

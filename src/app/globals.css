@@ -420,7 +420,8 @@ a span {
 }
 
 .form-input input,
-.form-input textarea {
+.form-input textarea,
+.form-input select {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.16);
   padding: 20px;
@@ -430,8 +431,19 @@ a span {
   font-size: 16px;
 }
 
+.form-input select option {
+  color: black;
+  background: white;
+}
+
 .form-input textarea {
   height: 128px;
+}
+
+.form-input .form-error {
+  color: #ef4444;
+  font-size: 14px;
+  margin-top: 4px;
 }
 
 .form .btn-primary {
@@ -572,6 +584,14 @@ a span {
 
 .whatsapp-float:hover {
   transform: scale(1.1);
+}
+
+.payment-wrapper {
+  margin-top: 90px;
+}
+
+.payment-wrapper .heading {
+  text-align: left;
 }
 
 /* Responsive */

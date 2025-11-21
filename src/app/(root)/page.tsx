@@ -1,4 +1,5 @@
 import Company from "@/components/shared/Company";
+import Contact from "@/components/shared/Contact";
 import HeroSection from "@/components/shared/HeroSection";
 import Navbar from "@/components/shared/Navbar";
 import Stats from "@/components/shared/Stats";
@@ -17,6 +18,7 @@ const Home = () => {
       <Navbar pageName="corderoservices" />
       <HeroSection pageName="corderoservices" />
       <Stats pageName="corderoservices" />
+      <Contact />
       <Company />
     </>
   );
