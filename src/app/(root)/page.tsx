@@ -1,5 +1,5 @@
 import Company from "@/components/shared/Company";
-import Contact from "@/components/shared/Contact";
+import Contact from "@/components/shared/contact/Contact";
 import HeroSection from "@/components/shared/HeroSection";
 import Navbar from "@/components/shared/Navbar";
 import Stats from "@/components/shared/Stats";
@@ -8,8 +8,8 @@ import Stats from "@/components/shared/Stats";
 export const metadata = {
   title: "Cordero Services",
   icons: {
-    icon: "/images/favicon.ico"
-  }
+    icon: "/images/favicon.ico",
+  },
 };
 
 const Home = () => {
@@ -18,10 +18,10 @@ const Home = () => {
       <Navbar pageName="corderoservices" />
       <HeroSection pageName="corderoservices" />
       <Stats pageName="corderoservices" />
-      <Contact />
       <Company />
+      <Contact />
     </>
   );
-}
- 
+};
+
 export default Home;

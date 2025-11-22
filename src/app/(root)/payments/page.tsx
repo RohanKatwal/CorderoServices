@@ -5,38 +5,7 @@ import Navbar from "@/components/shared/Navbar";
 import Select from "@/components/shared/Select";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
-
-export const formSchema = z.object({
-  name: z
-    .string()
-    .min(1, { message: "Name is required" })
-    .min(2, { message: "Name is too short" })
-    .trim(),
-
-  email: z
-    .string()
-    .min(1, { message: "Email is required" })
-    .email({ message: "Invalid email address" }),
-
-  phone: z
-    .string()
-    .min(1, { message: "Phone number is required" })
-    .min(7, { message: "Invalid phone number" })
-    .regex(/^\+?[1-9]\d{1,14}$/, {
-      message: "Phone number must be a valid international format (E.164)",
-    }),
-
-  company: z
-    .string()
-    .min(1, { message: "Company name is required" })
-    .trim()
-    .refine((val) => val.length > 0, {
-      message: "Company name cannot be empty",
-    }),
-
-  note: z.string().optional(),
-});
+import { formSchema, PaymentType } from "./paymentValidation";
 
 export const companyOptions = [
   {
@@ -54,20 +23,23 @@ export const companyOptions = [
 ];
 
 const Payments = () => {
-  const { register, handleSubmit, formState: {errors}, reset } = useForm<z.infer<typeof formSchema>>(
-    {
-      resolver: zodResolver(formSchema),
-      defaultValues: {
-        name: "",
-        email: "",
-        phone: undefined,
-        company: "",
-        note: "",
-      },
-    }
-  );
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<PaymentType>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      company: "",
+      note: "",
+    },
+  });
 
-  const handleFormSubmit = (data: z.infer<typeof formSchema>) => {
+  const handleFormSubmit = (data: PaymentType) => {
     console.log(data);
   };
   return (
@@ -122,9 +94,7 @@ const Payments = () => {
           </form>
           <div>
             <div className="contact-right">
-              <h3>
-                Payment Method
-              </h3>
+              <h3>Payment Method</h3>
             </div>
             <div className="contact-right"></div>
           </div>

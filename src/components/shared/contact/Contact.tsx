@@ -1,6 +1,64 @@
+"use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { contactSchema, ContactType } from "./contactValidation";
+import Input from "../Input";
+import Textarea from "../Textarea";
+import emailjs from "@emailjs/browser";
+import { useRef, useState } from "react";
+import { toast } from "react-toastify";
 
 const Contact = () => {
+  const [loading, setLoading] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<ContactType>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
+  });
+
+  const handleContactSubmit = async (data: ContactType) => {
+    if (!formRef.current) return;
+
+    if (
+      !process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID ||
+      !process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID ||
+      !process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY
+    ) {
+      toast.error("Email configuration missing!");
+      return;
+    }
+    setLoading(true);
+    try {
+      await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
+        formRef.current,
+        { publicKey: process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY }
+      );
+
+      toast.success("Message sent successfully!");
+
+      reset();
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to send message!");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="container contact-wrapper" id="contact">
       <div className="heading">
@@ -13,56 +71,49 @@ const Contact = () => {
         </p>
       </div>
       <div className="contact-content">
-        <form className="form" action="">
-          <div className="form-input">
-            <label htmlFor="name">
-              Nombre <span>*</span>
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Type Here..."
-              required
-            />
-          </div>
-          <div className="form-input">
-            <label htmlFor="email">
-              Correo electrónico <span>*</span>
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Demo@gmail.com"
-              required
-            />
-          </div>
-          <div className="form-input">
-            <label htmlFor="phone">
-              Teléfono <span>*</span>
-            </label>
-            <input
-              type="tel"
-              name="phone"
-              id="phone"
-              placeholder="099 |"
-              required
-            />
-          </div>
-          <div className="form-input message">
-            <label htmlFor="message">
-              Mensaje <span>*</span>
-            </label>
-            <textarea
-              name="message"
-              id="message"
-              placeholder="Type Here..."
-              required
-            ></textarea>
-          </div>
-          <button type="submit" className="btn-primary send-btn" id="sendBtn">
-            Enviar mensaje
+        <form
+          ref={formRef}
+          className="form"
+          onSubmit={handleSubmit(handleContactSubmit)}
+        >
+          <Input
+            type="text"
+            label="Nombre"
+            name="name"
+            placeholder="Type Here..."
+            error={errors.name?.message}
+            register={register("name")}
+          />
+          <Input
+            type="email"
+            label="Correo electrónico"
+            name="email"
+            placeholder="Demo@gmail.com"
+            error={errors.email?.message}
+            register={register("email")}
+          />
+          <Input
+            type="text"
+            label="Teléfono"
+            name="phone"
+            placeholder="099 |"
+            error={errors.phone?.message}
+            register={register("phone")}
+          />
+          <Textarea
+            label="Mensaje"
+            name="message"
+            placeholder="Type Here..."
+            error={errors.message?.message}
+            register={register("message")}
+          />
+          <button
+            type="submit"
+            disabled={loading}
+            className="btn-primary send-btn"
+            id="sendBtn"
+          >
+            {loading ? "Sending..." : "Enviar mensaje"}
             <span>
               <svg
                 width="24"
