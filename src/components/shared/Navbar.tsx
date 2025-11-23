@@ -6,6 +6,7 @@ import { useState } from "react";
 import { navLinks } from "@/constants";
 import { pageName } from "./HeroSection";
 import Image from "next/image";
+import { useUser } from "@/context/UserContext";
 
 const Navbar = ({ pageName }: pageName) => {
   const [menu, setMenu] = useState(false);
@@ -14,6 +15,8 @@ const Navbar = ({ pageName }: pageName) => {
   const handleMenu = () => {
     setMenu((prev) => !prev);
   };
+
+  const user = useUser();
 
   return (
     <nav className="navbar">
@@ -94,6 +97,13 @@ const Navbar = ({ pageName }: pageName) => {
               Payments
             </Link>
           </li>
+          {user && (
+            <li className="nav-item">
+              <Link href="/dashboard" className="btn-primary link">
+                Dashboard
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

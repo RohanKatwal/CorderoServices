@@ -22,7 +22,7 @@ export const companyOptions = [
   },
 ];
 
-const Payments = () => {
+const PaymentsPage = () => {
   const {
     register,
     handleSubmit,
@@ -104,4 +104,4 @@ const Payments = () => {
   );
 };
 
-export default Payments;
+export default PaymentsPage;

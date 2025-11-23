@@ -50,6 +50,10 @@ p {
   color: #d1d5dc;
 }
 
+ul {
+  list-style: none;
+}
+
 a span {
   display: flex;
 }
@@ -161,6 +165,11 @@ a span {
 .nav-links a:hover,
 .nav-links a.active {
   color: #f19200;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* Buttons */
@@ -586,12 +595,201 @@ a span {
   transform: scale(1.1);
 }
 
+/* Container */
+.video-thumbnail {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Thumbnail Image */
+.thumbnail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(75%);
+  transition: filter 0.3s ease;
+}
+
+.video-thumbnail:hover .thumbnail-img {
+  filter: brightness(90%);
+}
+
+/* Custom Play Button */
+.custom-play-btn {
+  width: 80px;
+  height: 80px;
+  background: rgba(241, 146, 0, 0.5);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* Hover effect on play button */
+.video-thumbnail:hover .custom-play-btn {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Play Icon */
+.play-icon {
+  width: 0;
+  height: 0;
+  border-left: 24px solid white;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+}
+
+.videos-wrapper {
+  margin-top: 96px;
+}
+
+.videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.video-item {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.video-item iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: none;
+}
+.video-item .description {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.video-item .location {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px;
+  border-radius: 40px;
+  background-color: rgba(0, 0, 0, 0.108);
+  backdrop-filter: blur(12px);
+}
+
 .payment-wrapper {
   margin-top: 90px;
 }
 
 .payment-wrapper .heading {
   text-align: left;
+}
+
+.login {
+  margin: 90px auto 0;
+  max-width: 700px;
+}
+
+.login form {
+  margin-top: 48px;
+}
+
+.dashboard-content-wrapper {
+  padding: 0px 32px;
+}
+
+.dashboard-header {
+  padding: 32px;
+  margin-bottom: 48px;
+}
+.dashboard-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Table Container */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 15px;
+  background-color: #1e1e1e; /* Dark table background */
+  color: #e6e6e6; /* Light text */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Table header */
+thead {
+  background-color: #2c2c2c;
+}
+
+thead th {
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #333;
+}
+
+/* Table rows */
+tbody tr {
+  border-bottom: 1px solid #2a2a2a;
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: #323232; /* Hover effect */
+}
+
+/* Table cells */
+td {
+  padding: 10px 14px;
+  color: #dcdcdc;
+}
+
+td.truncate {
+  max-width: 180px; /* Adjust width depending on column */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* “No videos” row */
+tbody tr td[colspan] {
+  text-align: center;
+  padding: 15px;
+  color: #999;
+  background-color: #1a1a1a;
+}
+
+/* Optional: clickable rows */
+tbody tr:hover td {
+  cursor: pointer;
+}
+
+/* Responsive: handle overflow on small screens */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
 }
 
 /* Responsive */

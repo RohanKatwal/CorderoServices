@@ -12,7 +12,7 @@ export const metadata = {
   },
 };
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       <Navbar pageName="corderoservices" />
@@ -24,4 +24,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
