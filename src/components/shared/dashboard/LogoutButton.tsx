@@ -1,6 +1,6 @@
 "use client";
 
-import { clearSession } from "@/app/api/clear-session/route";
+import { clearSession } from "@/lib/clearSession";
 import { auth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
