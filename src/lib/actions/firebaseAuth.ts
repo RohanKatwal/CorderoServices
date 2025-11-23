@@ -24,7 +24,12 @@ export const login = async (data: LoginType) => {
       body: JSON.stringify({ token }),
     });
 
-    return { user: userCredential.user, error: null };
+    const user = {
+      uid: userCredential.user.uid,
+      email: userCredential.user.email,
+    };
+
+    return { user: user, error: null };
   } catch (error) {
     return { user: null, error: "Login Failed" };
   }
