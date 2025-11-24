@@ -3,10 +3,11 @@
 import { deleteVideo } from "@/lib/actions/firebaseVideos";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import AddVideoModal, { VideoType } from "../modal/AddVideoModal";
+import VideoModal, { VideoType } from "../modal/VideoModal";
 
 const ActionButton = (video: VideoType) => {
   const router = useRouter();
+
   const handleDelete = async () => {
     try {
       const { message, error } = await deleteVideo(video.id!);
@@ -21,7 +22,7 @@ const ActionButton = (video: VideoType) => {
       return;
     }
   };
-  
+
   return (
     <>
       <td
@@ -33,7 +34,7 @@ const ActionButton = (video: VideoType) => {
         }}
       >
         <div>
-          <AddVideoModal type="Edit" video={video} />
+          <VideoModal type="Edit" video={video} />
         </div>
         <button onClick={handleDelete}>
           <svg

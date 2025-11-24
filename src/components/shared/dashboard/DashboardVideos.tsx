@@ -1,22 +1,15 @@
-import { deleteVideo, getVideos } from "@/lib/actions/firebaseVideos";
-import AddVideoModal, { VideoType } from "../modal/AddVideoModal";
-import ActionButton from "./ActionButton";
+import { getVideos } from "@/lib/actions/firebaseVideos";
+import VideoModal from "../modal/VideoModal";
+import ActionButton from "./VideoActionButton";
 
 const DashboardVideos = async () => {
   const videos = await getVideos();
 
-  const handleDelete = async (id: string) => {
-    const video = await deleteVideo(id);
-
-  }
   return (
     <section className="dashboard-content-wrapper">
       <div className="dashboard-heading">
         <h2>Videos</h2>
-        <div>
-          
-        </div>
-        <AddVideoModal type="Add" />
+        <VideoModal type="Add" />
       </div>
       <div className="table-wrapper">
         <table>

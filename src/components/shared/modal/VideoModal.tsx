@@ -1,6 +1,6 @@
 "use client";
 
-import z from "zod";
+import * as z from "zod";
 import Modal from "./Modal";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";

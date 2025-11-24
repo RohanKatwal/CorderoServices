@@ -3,12 +3,18 @@ import {
   collection,
   deleteDoc,
   doc,
-  getDoc,
   getDocs,
   updateDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import { VideoType } from "@/components/shared/modal/AddVideoModal";
+import { VideoType } from "@/components/shared/modal/VideoModal";
+
+interface VideoReturnType {
+  video?: VideoType | null;
+  videos?: VideoType[] | null;
+  message?: string | null;
+  error: string | null;
+}
 
 export const getVideos = async (): Promise<VideoType[]> => {
   try {
@@ -29,7 +35,7 @@ export const getVideos = async (): Promise<VideoType[]> => {
   }
 };
 
-export const addVideo = async (data: VideoType) => {
+export const addVideo = async (data: VideoType): Promise<VideoReturnType> => {
   try {
     const { title, description, url, location } = data;
     if (
@@ -59,7 +65,7 @@ export const addVideo = async (data: VideoType) => {
   }
 };
 
-export const deleteVideo = async (id: string) => {
+export const deleteVideo = async (id: string): Promise<VideoReturnType> => {
   try {
     if (!id) {
       return { message: null, error: "Video ID not provided" };
@@ -73,7 +79,7 @@ export const deleteVideo = async (id: string) => {
   }
 };
 
-export const editVideo = async (data: VideoType) => {
+export const editVideo = async (data: VideoType): Promise<VideoReturnType> => {
   try {
     const { id, title, description, url, location } = data;
 

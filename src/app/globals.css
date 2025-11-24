@@ -419,7 +419,8 @@ button:disabled {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
+  position: relative;
 }
 
 .form-input.message {
@@ -461,6 +462,9 @@ button:disabled {
   color: #ef4444;
   font-size: 14px;
   margin-top: 4px;
+  position: absolute;
+  bottom: -24px;
+  left: 0;
 }
 
 .form .btn-primary {
@@ -494,7 +498,7 @@ button:disabled {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 9px 16px;
+  padding: 16px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
 }
@@ -718,19 +722,18 @@ button:disabled {
 .login form {
   margin-top: 48px;
 }
-
-.dashboard-content-wrapper {
-  padding: 0px 32px;
-}
-
 .dashboard-header {
   padding: 32px;
-  margin-bottom: 48px;
 }
 .dashboard-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.dashboard-content-wrapper {
+  padding: 0px 32px;
+  margin-top: 48px;
 }
 
 /* Table Container */
