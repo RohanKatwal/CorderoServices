@@ -18,7 +18,11 @@ export const menuSchema = z.object({
 
 export type MenuType = z.infer<typeof menuSchema>;
 
-const MenuModal = () => {
+interface MenuModalProps {
+  onSuccess?: () => void;
+}
+
+const MenuModal = ({ onSuccess }: MenuModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -36,7 +40,7 @@ const MenuModal = () => {
   });
 
   const onSubmit = async (data: MenuType) => {
-    if(loading) return;
+    if (loading) return;
     setLoading(true);
     try {
       const { menu, error } = await addMenu(data);
@@ -47,12 +51,12 @@ const MenuModal = () => {
       toast.success("Menu added Successfully");
       reset();
       setIsOpen(false);
-      router.refresh();
+      if (onSuccess) onSuccess();
     } catch (error) {
       toast.error("Failed to add menu");
       return;
     } finally {
-        setLoading(false)
+      setLoading(false);
     }
   };
 
