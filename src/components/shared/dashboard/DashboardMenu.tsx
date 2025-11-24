@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getMenus, deleteMenu } from "@/lib/actions/firebaseMenu";
+import { getMenus } from "@/lib/actions/firebaseMenu";
 import MenuModal, { MenuType } from "../modal/MenuModal";
 import MenuActionButton from "./MenuActionButton";
 import { formattedDate } from "@/lib/utils";
-import { toast } from "react-toastify";
 
 const DashboardMenu = () => {
   const [menus, setMenus] = useState<MenuType[]>([]);

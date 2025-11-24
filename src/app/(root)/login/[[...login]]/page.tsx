@@ -8,6 +8,7 @@ import Input from "@/components/shared/Input";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
@@ -33,9 +34,14 @@ const LoginPage = () => {
         toast.error(error);
         return;
       }
-      toast.success("Successfully logged in");
-      reset();
-      router.push("/dashboard");
+      const auth = getAuth();
+      onAuthStateChanged(auth, (firebaseUser) => {
+        if (firebaseUser) {
+          toast.success("Successfully logged in");
+          reset();
+          router.push("/dashboard");
+        }
+      });
     } catch (error) {
       toast.error("Failed to login");
       return;
@@ -43,6 +49,7 @@ const LoginPage = () => {
       setLoading(false);
     }
   };
+
   return (
     <>
       <Navbar pageName="corderoservices" />

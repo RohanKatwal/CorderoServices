@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { ToastContainer } from "react-toastify";
-import { UserProvider } from "@/context/UserContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable}`}>
-        <UserProvider>{children}</UserProvider>
+        {children}
         <ToastContainer />
       </body>
     </html>

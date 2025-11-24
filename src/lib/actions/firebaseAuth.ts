@@ -1,14 +1,19 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  setPersistence,
+  browserLocalPersistence,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../firebase";
 import { LoginType } from "@/app/(root)/login/[[...login]]/loginValidation";
 
 export const login = async (data: LoginType) => {
   try {
     const { email, password } = data;
-
     if (!email.trim() || !password.trim()) {
       return { user: null, error: "Email and password are required" };
     }
+
+    await setPersistence(auth, browserLocalPersistence); // <--- important
 
     const userCredential = await signInWithEmailAndPassword(
       auth,
@@ -22,6 +27,7 @@ export const login = async (data: LoginType) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token }),
+      credentials: "include",
     });
 
     const user = {
@@ -29,7 +35,7 @@ export const login = async (data: LoginType) => {
       email: userCredential.user.email,
     };
 
-    return { user: user, error: null };
+    return { user, error: null };
   } catch (error) {
     return { user: null, error: "Login Failed" };
   }

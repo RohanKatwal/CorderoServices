@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { navLinks } from "@/constants";
 import { pageName } from "./HeroSection";
 import Image from "next/image";
-import { useUser } from "@/context/UserContext";
+import { auth } from "@/lib/firebase";
+import { onAuthStateChanged, User as FirebaseUser } from "firebase/auth";
 
 const Navbar = ({ pageName }: pageName) => {
+  const [user, setUser] = useState<FirebaseUser | null>(null);
   const [menu, setMenu] = useState(false);
   const pathname = usePathname();
 
@@ -16,7 +18,13 @@ const Navbar = ({ pageName }: pageName) => {
     setMenu((prev) => !prev);
   };
 
-  const user = useUser();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe(); // cleanup
+  }, []);
 
   return (
     <nav className="navbar">
