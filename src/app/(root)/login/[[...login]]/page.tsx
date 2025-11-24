@@ -34,14 +34,11 @@ const LoginPage = () => {
         toast.error(error);
         return;
       }
-      const auth = getAuth();
-      onAuthStateChanged(auth, (firebaseUser) => {
-        if (firebaseUser) {
-          toast.success("Successfully logged in");
-          reset();
-          router.push("/dashboard");
-        }
-      });
+      if (user) {
+        toast.success("Successfully logged in");
+        reset();
+        router.push("/dashboard");
+      }
     } catch (error) {
       toast.error("Failed to login");
       return;
