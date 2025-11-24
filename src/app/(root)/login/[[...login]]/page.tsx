@@ -37,6 +37,7 @@ const LoginPage = () => {
         toast.success("Successfully logged in");
         reset();
         router.push("/dashboard");
+        router.refresh();
       }
     } catch (error) {
       toast.error("Failed to login");
