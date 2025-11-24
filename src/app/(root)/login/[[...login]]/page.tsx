@@ -8,7 +8,6 @@ import Input from "@/components/shared/Input";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
