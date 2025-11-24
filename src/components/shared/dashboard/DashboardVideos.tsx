@@ -1,6 +1,6 @@
 import { getVideos } from "@/lib/actions/firebaseVideos";
 import VideoModal from "../modal/VideoModal";
-import ActionButton from "./VideoActionButton";
+import VideoActionButton from "./VideoActionButton";
 
 const DashboardVideos = async () => {
   const videos = await getVideos();
@@ -30,12 +30,8 @@ const DashboardVideos = async () => {
                   <td className="truncate">{video.description}</td>
                   <td className="truncate">{video.url}</td>
                   <td className="truncate">{video.location}</td>
-                  <ActionButton
-                    id={video.id}
-                    title={video.title}
-                    description={video.description}
-                    url={video.url}
-                    location={video.location}
+                  <VideoActionButton
+                    video={video}
                   />
                 </tr>
               ))

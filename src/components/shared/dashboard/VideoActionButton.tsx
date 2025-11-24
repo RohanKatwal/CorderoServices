@@ -5,7 +5,11 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import VideoModal, { VideoType } from "../modal/VideoModal";
 
-const ActionButton = (video: VideoType) => {
+interface VideoActionButtonProps {
+  video: VideoType;
+}
+
+const ActionButton = ({ video }: VideoActionButtonProps) => {
   const router = useRouter();
 
   const handleDelete = async () => {
