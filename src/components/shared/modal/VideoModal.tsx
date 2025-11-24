@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 interface VideoModalProps {
   type: "Add" | "Edit";
   video?: VideoType;
+  onSuccess?: () => void; 
 }
 
 export const VideoSchema = z.object({
@@ -29,7 +30,7 @@ export const VideoSchema = z.object({
 
 export type VideoType = z.infer<typeof VideoSchema>;
 
-const AddVideoModal = ({ type, video }: VideoModalProps) => {
+const AddVideoModal = ({ type, video, onSuccess }: VideoModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -61,7 +62,7 @@ const AddVideoModal = ({ type, video }: VideoModalProps) => {
       toast.success("Video added successfully");
       reset();
       setIsOpen(false);
-      router.refresh();
+      if (onSuccess) onSuccess();
     } catch (error) {
       toast.error("Failed to add video");
       return;
@@ -82,7 +83,7 @@ const AddVideoModal = ({ type, video }: VideoModalProps) => {
       toast.success(message);
       reset();
       setIsOpen(false);
-      router.refresh();
+      if (onSuccess) onSuccess();
     } catch (error) {
       toast.error("Failed to edit video");
       return;
