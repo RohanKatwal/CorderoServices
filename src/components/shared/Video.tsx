@@ -1,4 +1,4 @@
-import { VideoType } from "./dashboard/DashboardVideos";
+import { VideoType } from "./modal/AddVideoModal";
 import YouTubeCustomPlayer from "./YoutubeCustomPlayer";
 
 const Video = ({ title, description, location, url }: VideoType) => {

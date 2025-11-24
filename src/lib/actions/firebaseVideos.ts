@@ -1,6 +1,14 @@
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  getDocs,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
-import { VideoType } from "@/components/shared/dashboard/DashboardVideos";
+import { VideoType } from "@/components/shared/modal/AddVideoModal";
 
 export const getVideos = async (): Promise<VideoType[]> => {
   try {
@@ -46,11 +54,55 @@ export const addVideo = async (data: VideoType) => {
       error: null,
     };
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return { video: null, error: "Failed to add video" };
   }
 };
 
-export const editVideo = async (id: string) => {};
+export const deleteVideo = async (id: string) => {
+  try {
+    if (!id) {
+      return { message: null, error: "Video ID not provided" };
+    }
+    await deleteDoc(doc(db, "videos", id));
 
-export const deleteVideo = async (id: string) => {};
+    return { message: "Successfully Deleted", error: null };
+  } catch (error) {
+    console.error("Delete video error:", error);
+    return { message: null, error: "Failed to delete video" };
+  }
+};
+
+export const editVideo = async (data: VideoType) => {
+  try {
+    const { id, title, description, url, location } = data;
+
+    if (!id) {
+      return { message: null, error: "Video ID is missing" };
+    }
+
+    if (
+      !title.trim() ||
+      !description.trim() ||
+      !url.trim() ||
+      !location.trim()
+    ) {
+      return { message: null, error: "Please fill all the fields" };
+    }
+
+    const videoRef = doc(db, "videos", id);
+
+    await updateDoc(videoRef, {
+      title,
+      description,
+      url,
+      location,
+      updatedAt: new Date(),
+    });
+
+    return { message: "Successfully updated video", error: null };
+  } catch (error) {
+    console.log("Error editing video:", error);
+    return { message: null, error: "Failed to edit video" };
+  }
+};
