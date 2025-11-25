@@ -23,7 +23,7 @@ const Navbar = ({ pageName }: pageName) => {
       setUser(currentUser);
     });
 
-    return () => unsubscribe(); // cleanup
+    return () => unsubscribe(); 
   }, []);
 
   return (

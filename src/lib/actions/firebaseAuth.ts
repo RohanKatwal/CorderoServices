@@ -13,7 +13,7 @@ export const login = async (data: LoginType) => {
       return { user: null, error: "Email and password are required" };
     }
 
-    await setPersistence(auth, browserLocalPersistence); // <--- important
+     await setPersistence(auth, browserLocalPersistence);
 
     const userCredential = await signInWithEmailAndPassword(
       auth,
