@@ -13,10 +13,10 @@ interface VideoReturnType {
   video?: VideoType | null;
   videos?: VideoType[] | null;
   message?: string | null;
-  error: string | null;
+  error?: string | null;
 }
 
-export const getVideos = async (): Promise<VideoType[]> => {
+export const getVideos = async (): Promise<VideoReturnType> => {
   try {
     const snap = await getDocs(collection(db, "videos"));
 
@@ -28,10 +28,10 @@ export const getVideos = async (): Promise<VideoType[]> => {
       };
     });
 
-    return videos;
+    return {videos};
   } catch (error) {
     console.error("Error fetching videos:", error);
-    return [];
+    return { videos: [], error: "Failed to get videos"};
   }
 };
 

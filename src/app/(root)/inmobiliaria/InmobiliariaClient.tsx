@@ -11,7 +11,11 @@ import { useEffect, useState } from "react";
 const InmobiliariaClient = () => {
   const [videos, setVideos] = useState<VideoType[] | null>(null);
   useEffect(() => {
-    getVideos().then(setVideos);
+    getVideos().then((res) => {
+      if (!res.error && res.videos) {
+        setVideos(res.videos);
+      }
+    });
   }, []);
   return (
     <>

@@ -114,11 +114,11 @@ a span {
 /* Navbar */
 .navbar {
   background-color: #000;
-  padding: 15px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
   border: 1px solid rgba(69, 69, 69, 0.8);
+  padding: 15px 0;
 }
 
 .navbar-content {
@@ -139,8 +139,8 @@ a span {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 46px;
   list-style: none;
+  gap: 46px;
 }
 
 .nav-item {
@@ -148,8 +148,8 @@ a span {
 }
 .nav-item .active-line {
   position: absolute;
-  left: 0;
   bottom: -16px;
+  left: 0;
   display: none;
 }
 
@@ -165,6 +165,29 @@ a span {
 .nav-links a:hover,
 .nav-links a.active {
   color: #f19200;
+}
+
+.nav-item.services {
+  position: relative;
+}
+
+.nav-item.services .content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-item.services .services-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: absolute;
+  top: 30px;
+  background-color: rgb(32, 33, 34);
+  padding: 20px;
+  width: 200px;
+  border-radius: 12px;
+  z-index: 10;
 }
 
 button {

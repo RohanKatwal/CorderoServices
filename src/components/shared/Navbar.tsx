@@ -8,22 +8,34 @@ import { pageName } from "./HeroSection";
 import Image from "next/image";
 import { auth } from "@/lib/firebase";
 import { onAuthStateChanged, User as FirebaseUser } from "firebase/auth";
+import { MenuType } from "./modal/MenuModal";
+import { getMenus } from "@/lib/actions/firebaseMenu";
 
 const Navbar = ({ pageName }: pageName) => {
   const [user, setUser] = useState<FirebaseUser | null>(null);
-  const [menu, setMenu] = useState(false);
+  const [services, setServices] = useState<MenuType[] | null>(null);
+  const [showServices, setShowServices] = useState(false);
+  const [menu, showMenu] = useState(false);
   const pathname = usePathname();
 
   const handleMenu = () => {
-    setMenu((prev) => !prev);
+    showMenu((prev) => !prev);
   };
+
+  useEffect(() => {
+    getMenus().then((res) => {
+      if (!res.error && res.menus) {
+        setServices(res.menus);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
 
-    return () => unsubscribe(); 
+    return () => unsubscribe();
   }, []);
 
   return (
@@ -100,6 +112,43 @@ const Navbar = ({ pageName }: pageName) => {
               </div>
             </li>
           ))}
+          {pageName === "corderoservices" &&
+            services &&
+            services.length > 0 && (
+              <li className="nav-item services">
+                <Link
+                  className="content"
+                  onClick={() => setShowServices((prev) => !prev)}
+                  href={"#"}
+                >
+                  SERVICES
+                  <span>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5 7.5L10 12.5L15 7.5"
+                        stroke="#fff"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </Link>
+                {showServices && (
+                  <div className="services-dropdown">
+                    {services.map((item) => (
+                      <p key={item.id}>{item.title}</p>
+                    ))}
+                  </div>
+                )}
+              </li>
+            )}
           <li className="nav-item">
             <Link href="/payments" className="btn-primary link">
               Payments

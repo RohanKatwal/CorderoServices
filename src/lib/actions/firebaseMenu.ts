@@ -50,10 +50,14 @@ export const getMenus = async (): Promise<MenuReturnType> => {
       };
     });
 
+    if (!menus) {
+      return { error: "Failed to get menus" };
+    }
+
     return { menus };
   } catch (error) {
     console.error("Error fetching videos:", error);
-    return { error: "Failed to get menus" };
+    return { menus: [], error: "Failed to get menus" };
   }
 };
 

@@ -13,7 +13,7 @@ const DashboardVideos = () => {
   const fetchVideos = async () => {
     setLoading(true);
     const data = await getVideos();
-    setVideos(data ?? []);
+    setVideos(data.videos ?? []);
     setLoading(false);
   };
 
