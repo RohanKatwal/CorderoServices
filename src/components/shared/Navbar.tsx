@@ -112,46 +112,44 @@ const Navbar = ({ pageName }: pageName) => {
               </div>
             </li>
           ))}
-          {pageName === "corderoservices" &&
-            services &&
-            services.length > 0 && (
-              <li className="nav-item services">
-                <Link
-                  className="content"
-                  onClick={() => setShowServices((prev) => !prev)}
-                  href={"#"}
-                >
-                  SERVICES
-                  <span>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M5 7.5L10 12.5L15 7.5"
-                        stroke="#fff"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </Link>
-                {showServices && (
-                  <div className="services-dropdown">
-                    {services.map((item) => (
-                      <p key={item.id}>{item.title}</p>
-                    ))}
-                  </div>
-                )}
-              </li>
-            )}
+          {pageName === "corderoservices" && (
+            <li className="nav-item services">
+              <Link
+                className="content"
+                onClick={() => setShowServices((prev) => !prev)}
+                href={"#"}
+              >
+                SERVICES
+                <span>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 7.5L10 12.5L15 7.5"
+                      stroke="#fff"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </Link>
+              {showServices && (
+                <div className="services-dropdown">
+                  {services &&
+                    services.length > 0 &&
+                    services.map((item) => <p key={item.id}>{item.title}</p>)}
+                </div>
+              )}
+            </li>
+          )}
           <li className="nav-item">
             <Link href="/payments" className="btn-primary link">
-              Payments
+              Pagos
             </Link>
           </li>
           {user && (

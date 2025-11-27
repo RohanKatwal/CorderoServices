@@ -18,28 +18,44 @@ const Company = () => {
         <div className="companies-grid">
           <div className="company-card">
             <div className="company-logo">
-              <Image src="/images/OFFTARQLogo.png" width={173} height={143} alt="offtarq logo" />
+              <Image
+                src="/images/OFFTARQLogo.png"
+                width={173}
+                height={143}
+                alt="offtarq logo"
+              />
             </div>
             <h2>OFFTARQ</h2>
             <p>
               Servicios profesionales de arquitectura y construcción que ofrecen
               soluciones innovadoras para proyectos modernos.
             </p>
-            <Link href="#" className="btn-primary">
+            <Link
+              href="https://www.medicionescuenca.com/"
+              className="btn-primary"
+            >
               Aprende Más..
             </Link>
           </div>
 
           <div className="company-card">
             <div className="company-logo">
-              <Image src="/images/ICLogo.png" width={213} height={143} alt="inmobiliaria logo" />
+              <Image
+                src="/images/ICLogo.png"
+                width={213}
+                height={143}
+                alt="inmobiliaria logo"
+              />
             </div>
             <h2>IC Real Estate</h2>
             <p>
               Servicios inmobiliarios premium que te conectan con tus
               propiedades soñadas y coordinamos las oportunidades de inversión.
             </p>
-            <Link href="#" className="btn-primary">
+            <Link
+              href="https://corderoservices.vercel.app/inmobiliaria"
+              className="btn-primary"
+            >
               Aprende Más..
             </Link>
           </div>

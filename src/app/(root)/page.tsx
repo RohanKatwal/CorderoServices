@@ -1,5 +1,6 @@
 import Company from "@/components/shared/Company";
 import Contact from "@/components/shared/contact/Contact";
+import Footer from "@/components/shared/Footer";
 import HeroSection from "@/components/shared/HeroSection";
 import Navbar from "@/components/shared/Navbar";
 import Stats from "@/components/shared/Stats";
@@ -20,6 +21,7 @@ const HomePage = () => {
       <Stats pageName="corderoservices" />
       <Company />
       <Contact />
+      <Footer pageName="corderoservices" />
     </>
   );
 };

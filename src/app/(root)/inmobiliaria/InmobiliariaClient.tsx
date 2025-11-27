@@ -1,5 +1,6 @@
 "use client";
 import Contact from "@/components/shared/contact/Contact";
+import Footer from "@/components/shared/Footer";
 import HeroSection from "@/components/shared/HeroSection";
 import { VideoType } from "@/components/shared/modal/VideoModal";
 import Navbar from "@/components/shared/Navbar";
@@ -47,6 +48,7 @@ const InmobiliariaClient = () => {
         </ul>
       </section>
       <Contact />
+      <Footer pageName="inmobiliaria" />
     </>
   );
 };

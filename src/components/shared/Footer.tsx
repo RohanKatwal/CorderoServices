@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-const Footer = () => {
+interface FooterProps {
+  pageName: "corderoservices" | "inmobiliaria";
+}
+
+const Footer = ({ pageName }: FooterProps) => {
   return (
     <footer className="footer">
       <div className="container">
@@ -146,7 +150,13 @@ const Footer = () => {
           <div className="social">
             <h3>Síguenos</h3>
             <div className="s-top">
-              <Link href="https://www.facebook.com/ofttarq">
+              <Link
+                href={
+                  pageName === "corderoservices"
+                    ? "https://www.facebook.com/ofttarq"
+                    : "https://www.facebook.com/people/INMO-Cordero/61570584921220"
+                }
+              >
                 <svg
                   width="40"
                   height="40"
