@@ -88,3 +88,37 @@ export const statsContent = {
     },
   ],
 };
+
+export const companyOptions = [
+  {
+    label: "OFTTARQ",
+    value: "offtarq",
+  },
+  {
+    label: "INMO CODERO",
+    value: "inmocodero",
+  },
+  {
+    label: "Other",
+    value: "other",
+  },
+];
+
+
+export const serviceOptions = [
+  {
+    label: "Yoga",
+    value: "yoga",
+    price: 100,
+  },
+  {
+    label: "Escuela De Idiomas",
+    value: "escuela de idiomas",
+    price: 200,
+  },
+  {
+    label: "Desalloros Digitales",
+    value: "desalloros digitales",
+    price: 250,
+  },
+];

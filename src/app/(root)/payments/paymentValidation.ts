@@ -27,6 +27,16 @@ export const formSchema = z.object({
       message: "Company name cannot be empty",
     }),
 
+  services: z
+    .string()
+    .min(1, { message: "Service is required" })
+    .trim()
+    .refine((val) => val.length > 0, {
+      message: "Service cannot be empty",
+    }),
+
+  amount: z.number().min(1, { message: "Select a service" }).readonly(),
+
   note: z.string().optional(),
 });
 

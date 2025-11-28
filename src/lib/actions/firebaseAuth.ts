@@ -9,14 +9,14 @@ import { LoginType } from "@/app/(root)/login/[[...login]]/loginValidation";
 export const login = async (data: LoginType) => {
   try {
     const { email, password } = data;
-    
+
     await setPersistence(auth, browserSessionPersistence);
 
     if (!email.trim() || !password.trim()) {
       return { user: null, error: "Email and password are required" };
     }
 
-
+    
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,

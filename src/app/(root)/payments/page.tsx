@@ -6,21 +6,10 @@ import Select from "@/components/shared/Select";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { formSchema, PaymentType } from "./paymentValidation";
-
-export const companyOptions = [
-  {
-    label: "OFTTARQ",
-    value: "offtarq",
-  },
-  {
-    label: "INMO CODERO",
-    value: "inmocodero",
-  },
-  {
-    label: "Other",
-    value: "other",
-  },
-];
+import { companyOptions, serviceOptions } from "@/constants";
+import { useEffect } from "react";
+import PayPalButton from "@/components/shared/PayPalButton";
+import Script from "next/script";
 
 const PaymentsPage = () => {
   const {
@@ -28,6 +17,9 @@ const PaymentsPage = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
+    setValue,
+    getValues,
   } = useForm<PaymentType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -35,12 +27,36 @@ const PaymentsPage = () => {
       email: "",
       phone: "",
       company: "",
+      services: "",
+      amount: 0,
       note: "",
     },
   });
 
-  const handleFormSubmit = (data: PaymentType) => {
-    console.log(data);
+  const selectedServiceValue = watch("services");
+
+  useEffect(() => {
+    const selected = serviceOptions.find(
+      (s) => s.value === selectedServiceValue
+    );
+
+    if (selected) {
+      setValue("amount", selected.price);
+    }
+  }, [selectedServiceValue, setValue]);
+
+  const handleFormSubmit = async (data: PaymentType) => {
+    const res = await fetch("/api/paypal/create-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data), // ⭐ send everything
+    });
+
+    const result = await res.json();
+
+    window.location.href = result.links.find(
+      (l: { href: string; rel: string; method: string }) => l.rel === "approve"
+    ).href;
   };
   return (
     <>
@@ -78,10 +94,26 @@ const PaymentsPage = () => {
             />
             <Select
               options={companyOptions}
-              label="Company/Services"
+              label="Company"
               name="company"
               error={errors.company?.message}
               register={register("company")}
+            />
+            <Select
+              options={serviceOptions}
+              label="Services"
+              name="service"
+              error={errors.services?.message}
+              register={register("services")}
+            />
+            <Input
+              type="number"
+              label="Amount"
+              name="amount"
+              placeholder="Amount"
+              readonly={true}
+              error={errors.amount?.message}
+              register={register("amount")}
             />
             <Input
               type="text"
@@ -95,6 +127,27 @@ const PaymentsPage = () => {
           <div>
             <div className="contact-right">
               <h3>Payment Method</h3>
+              <Script
+                src={`https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}&currency=USD&disable-funding=card,credit`}
+                strategy="afterInteractive"
+              />
+              <PayPalButton
+                getOrderData={() => {
+                  const values = getValues();
+                  return {
+                    name: values.name || "Anonymous",
+                    email: values.email || "anon@example.com",
+                    phone: values.phone || "",
+                    company: values.company || "",
+                    services: values.services || "",
+                    note: values.note || "",
+                  };
+                }} // getValues from react-hook-form
+                onSuccess={() => {
+                  console.log("Payment completed!");
+                  // Optional: redirect or reset form
+                }}
+              />
             </div>
             <div className="contact-right"></div>
           </div>
