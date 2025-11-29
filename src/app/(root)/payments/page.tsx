@@ -16,7 +16,6 @@ const PaymentsPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
     watch,
     setValue,
     getValues,
@@ -32,7 +31,7 @@ const PaymentsPage = () => {
       note: "",
     },
   });
-//check
+
   const selectedServiceValue = watch("services");
 
   useEffect(() => {
@@ -45,19 +44,6 @@ const PaymentsPage = () => {
     }
   }, [selectedServiceValue, setValue]);
 
-  const handleFormSubmit = async (data: PaymentType) => {
-    const res = await fetch("/api/paypal/create-order", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data), // ⭐ send everything
-    });
-
-    const result = await res.json();
-
-    window.location.href = result.links.find(
-      (l: { href: string; rel: string; method: string }) => l.rel === "approve"
-    ).href;
-  };
   return (
     <>
       <Navbar pageName="corderoservices" />
@@ -67,7 +53,7 @@ const PaymentsPage = () => {
           <p>Pagos rápidos y seguros para todos nuestros servicios.</p>
         </div>
         <div className="contact-content">
-          <form className="form" onSubmit={handleSubmit(handleFormSubmit)}>
+          <form className="form">
             <Input
               type="text"
               label="Name"
@@ -102,7 +88,7 @@ const PaymentsPage = () => {
             <Select
               options={serviceOptions}
               label="Services"
-              name="service"
+              name="services"
               error={errors.services?.message}
               register={register("services")}
             />
@@ -134,22 +120,31 @@ const PaymentsPage = () => {
               <PayPalButton
                 getOrderData={() => {
                   const values = getValues();
+                  
+                  // Validate form before payment
+                  const validation = formSchema.safeParse(values);
+                  if (!validation.success) {
+                    alert("Please fill all required fields correctly");
+                    throw new Error("Form validation failed");
+                  }
+                  
                   return {
-                    name: values.name || "Anonymous",
-                    email: values.email || "anon@example.com",
-                    phone: values.phone || "",
-                    company: values.company || "",
-                    services: values.services || "",
+                    name: values.name,
+                    email: values.email,
+                    phone: values.phone,
+                    company: values.company,
+                    services: values.services,
                     note: values.note || "",
                   };
-                }} // getValues from react-hook-form
+                }}
                 onSuccess={() => {
                   console.log("Payment completed!");
-                  // Optional: redirect or reset form
+                  alert("Payment successful! Thank you for your purchase.");
+                  // Reset form after successful payment
+                  window.location.reload();
                 }}
               />
             </div>
-            <div className="contact-right"></div>
           </div>
         </div>
       </div>
