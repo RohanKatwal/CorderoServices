@@ -15,7 +15,6 @@ export async function POST(req: NextRequest) {
     const secret = process.env.PAYPAL_SECRET!;
     const basicAuth = Buffer.from(`${clientId}:${secret}`).toString("base64");
 
-    // Get access token
     const tokenRes = await fetch(
       "https://api-m.sandbox.paypal.com/v1/oauth2/token",
       {
@@ -30,7 +29,6 @@ export async function POST(req: NextRequest) {
 
     const tokenData = await tokenRes.json();
 
-    // Capture the order
     const captureRes = await fetch(
       `https://api-m.sandbox.paypal.com/v2/checkout/orders/${orderID}/capture`,
       {
@@ -45,7 +43,6 @@ export async function POST(req: NextRequest) {
     const captureData = await captureRes.json();
 
     if (captureData.status === "COMPLETED") {
-      // TODO: Save transaction to database
       console.log("Payment captured:", captureData);
       
       return NextResponse.json({

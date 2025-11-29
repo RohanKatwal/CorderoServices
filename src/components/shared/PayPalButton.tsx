@@ -9,7 +9,7 @@ declare global {
 
 type PayPalButtonProps = {
   getOrderData: () => any;
-  onSuccess?: () => void;
+  onSuccess?: (orderID: string) => void;
 };
 
 const PayPalButton: React.FC<PayPalButtonProps> = ({
@@ -62,7 +62,6 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({
         },
         onApprove: async (data: any) => {
           try {
-            // Capture the payment
             const res = await fetch(`/api/paypal/capture-order`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -75,7 +74,7 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({
               throw new Error(result.error);
             }
             
-            if (onSuccess) onSuccess();
+            if (onSuccess) onSuccess(data.orderID);
           } catch (error: any) {
             console.error("Capture order error:", error);
             alert("Payment capture failed: " + error.message);

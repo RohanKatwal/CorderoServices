@@ -37,7 +37,6 @@ export async function POST(req: NextRequest) {
 
     const basicAuth = Buffer.from(`${clientId}:${secret}`).toString("base64");
 
-    // Get access token
     const tokenRes = await fetch(
       "https://api-m.sandbox.paypal.com/v1/oauth2/token",
       {
@@ -56,7 +55,6 @@ export async function POST(req: NextRequest) {
       throw new Error("Failed to get PayPal access token");
     }
 
-    // Create order
     const orderRes = await fetch(
       "https://api-m.sandbox.paypal.com/v2/checkout/orders",
       {
@@ -87,8 +85,6 @@ export async function POST(req: NextRequest) {
             brand_name: "Cordero Services",
             landing_page: "NO_PREFERENCE",
             user_action: "PAY_NOW",
-            return_url: `${process.env.NEXT_PUBLIC_BASE_URL}/payment/success`,
-            cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/payment/cancel`,
           },
         }),
       }
