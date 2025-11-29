@@ -32,7 +32,7 @@ const PaymentsPage = () => {
       note: "",
     },
   });
-
+//check
   const selectedServiceValue = watch("services");
 
   useEffect(() => {
