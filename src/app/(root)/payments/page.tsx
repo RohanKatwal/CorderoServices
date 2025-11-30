@@ -57,7 +57,6 @@ const PaymentsPage = () => {
       const serviceLabel =
         serviceOptions.find((s) => s.value === formData.services)?.label ||
         formData.services;
-
       const templateParams = {
         order_id: orderID,
         customer_name: formData.name,
@@ -85,12 +84,11 @@ const PaymentsPage = () => {
         process.env.NEXT_PUBLIC_EMAILJS_ADMIN_TEMPLATE_ID!,
         {
           ...templateParams,
-          to_email: process.env.ADMIN_EMAIL,
+          to_email: process.env.NEXT_PUBLIC_ADMIN_EMAIL,
           to_name: "Admin",
         }
       );
 
-      console.log("Confirmation emails sent successfully");
     } catch (error) {
       console.error("Email sending failed:", error);
       toast.error("Payment successful! There was a problem sending the confirmation email – we will contact you shortly.");

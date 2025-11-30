@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
 
     const basicAuth = Buffer.from(`${clientId}:${secret}`).toString("base64");
 
-    console.log("token:", basicAuth)
+    //console.log("token:", basicAuth)
 
     const tokenRes = await fetch(
       "https://api-m.sandbox.paypal.com/v1/oauth2/token",
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
     );
 
     const tokenData = await tokenRes.json();
-    console.log(tokenData)
+    //console.log(tokenData)
 
     if (!tokenData.access_token) {
       throw new Error("Failed to get PayPal access token");
