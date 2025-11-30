@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     const service = serviceOptions.find((s) => s.value === parsed.services);
     if (!service)
       return NextResponse.json({ error: "Invalid service" }, { status: 400 });
-    
+
     if (!companyOptions.find((c) => c.value === parsed.company))
       return NextResponse.json({ error: "Invalid company" }, { status: 400 });
 
@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
 
     const clientId = process.env.PAYPAL_CLIENT_ID!;
     const secret = process.env.PAYPAL_SECRET!;
-    
+
     if (!clientId || !secret) {
       return NextResponse.json(
         { error: "PayPal credentials not configured" },
@@ -36,6 +36,8 @@ export async function POST(req: NextRequest) {
     }
 
     const basicAuth = Buffer.from(`${clientId}:${secret}`).toString("base64");
+
+    console.log("token:", basicAuth)
 
     const tokenRes = await fetch(
       "https://api-m.sandbox.paypal.com/v1/oauth2/token",
@@ -48,9 +50,10 @@ export async function POST(req: NextRequest) {
         body: "grant_type=client_credentials",
       }
     );
-    
+
     const tokenData = await tokenRes.json();
-    
+    console.log(tokenData)
+
     if (!tokenData.access_token) {
       throw new Error("Failed to get PayPal access token");
     }
@@ -91,7 +94,7 @@ export async function POST(req: NextRequest) {
     );
 
     const order = await orderRes.json();
-    
+
     if (!order.id) {
       console.error("PayPal order creation failed:", order);
       throw new Error(order.message || "PayPal order ID not returned");

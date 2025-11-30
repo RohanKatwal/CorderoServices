@@ -46,13 +46,13 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(orderData),
             });
-            
+
             const data = await res.json();
-            
+
             if (!data.id) {
               throw new Error(data.error || "Order ID not returned");
             }
-            
+
             return data.id;
           } catch (error: any) {
             console.error("Create order error:", error);
@@ -67,13 +67,13 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ orderID: data.orderID }),
             });
-            
+
             const result = await res.json();
-            
+
             if (result.error) {
               throw new Error(result.error);
             }
-            
+
             if (onSuccess) onSuccess(data.orderID);
           } catch (error: any) {
             console.error("Capture order error:", error);

@@ -12,6 +12,7 @@ import PayPalButton from "@/components/shared/PayPalButton";
 import Script from "next/script";
 
 import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
 
 const PaymentsPage = () => {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
@@ -40,7 +41,9 @@ const PaymentsPage = () => {
   const selectedServiceValue = watch("services");
 
   useEffect(() => {
-    const selected = serviceOptions.find((s) => s.value === selectedServiceValue);
+    const selected = serviceOptions.find(
+      (s) => s.value === selectedServiceValue
+    );
     if (selected) setValue("amount", selected.price);
   }, [selectedServiceValue, setValue]);
 
@@ -90,11 +93,8 @@ const PaymentsPage = () => {
       console.log("Confirmation emails sent successfully");
     } catch (error) {
       console.error("Email sending failed:", error);
-      alert(
-        "Payment successful! There was a problem sending the confirmation email – we will contact you shortly."
-      );
+      toast.error("Payment successful! There was a problem sending the confirmation email – we will contact you shortly.");
     }
-
     reset();
   };
 
@@ -127,7 +127,11 @@ const PaymentsPage = () => {
               <div className="detail-row">
                 <span className="detail-label">Service:</span>
                 <span className="detail-value">
-                  {serviceOptions.find((s) => s.value === paymentDetails?.services)?.label}
+                  {
+                    serviceOptions.find(
+                      (s) => s.value === paymentDetails?.services
+                    )?.label
+                  }
                 </span>
               </div>
               <div className="detail-row">
@@ -137,7 +141,8 @@ const PaymentsPage = () => {
             </div>
 
             <p className="email-notification">
-              A confirmation email has been sent to <strong>{paymentDetails?.email}</strong>
+              A confirmation email has been sent to{" "}
+              <strong>{paymentDetails?.email}</strong>
             </p>
 
             <button
@@ -160,7 +165,7 @@ const PaymentsPage = () => {
             padding: 40px;
             background: white;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
           }
           .success-icon {
             width: 80px;
@@ -175,20 +180,68 @@ const PaymentsPage = () => {
             margin: 0 auto 20px;
             animation: scaleIn 0.5s ease-out;
           }
-          @keyframes scaleIn { from { transform: scale(0); } to { transform: scale(1); } }
-          .payment-success-message h1 { color: #10b981; font-size: 32px; margin-bottom: 10px; }
-          .success-subtitle { color: #6b7280; margin-bottom: 30px; }
-          .payment-details-card { background: #f9fafb; border-radius: 8px; padding: 24px; margin: 30px 0; text-align: left; }
-          .detail-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #e5e7eb; }
-          .detail-row:last-child { border-bottom: none; }
-          .detail-label { color: #6b7280; font-weight: 500; }
-          .detail-value { color: #111827; font-weight: 600; }
-          .email-notification { background: #dbeafe; color: #1e40af; padding: 12px 20px; border-radius: 6px; margin: 20px 0; }
-          .btn-primary {
-            background: #3b82f6; color: white; padding: 12px 32px; border: none; border-radius: 6px;
-            font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 20px;
+          @keyframes scaleIn {
+            from {
+              transform: scale(0);
+            }
+            to {
+              transform: scale(1);
+            }
           }
-          .btn-primary:hover { background: #2563eb; }
+          .payment-success-message h1 {
+            color: #10b981;
+            font-size: 32px;
+            margin-bottom: 10px;
+          }
+          .success-subtitle {
+            color: #6b7280;
+            margin-bottom: 30px;
+          }
+          .payment-details-card {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 30px 0;
+            text-align: left;
+          }
+          .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e7eb;
+          }
+          .detail-row:last-child {
+            border-bottom: none;
+          }
+          .detail-label {
+            color: #6b7280;
+            font-weight: 500;
+          }
+          .detail-value {
+            color: #111827;
+            font-weight: 600;
+          }
+          .email-notification {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+          }
+          .btn-primary {
+            background: #3b82f6;
+            color: white;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+          }
+          .btn-primary:hover {
+            background: #2563eb;
+          }
         `}</style>
       </>
     );
@@ -205,13 +258,60 @@ const PaymentsPage = () => {
 
         <div className="contact-content">
           <form className="form">
-            <Input label="Name"             placeholder="John Doe"            register={register("name")}    error={errors.name?.message} />
-            <Input label="Email"            placeholder="john@example.com"    register={register("email")}   error={errors.email?.message} type="email" />
-            <Input label="Phone"            placeholder="099 123 4567"        register={register("phone")}   error={errors.phone?.message} type="tel" />
-            <Select label="Company"         options={companyOptions}          register={register("company")} error={errors.company?.message} />
-            <Select label="Service"         options={serviceOptions}          register={register("services")} error={errors.services?.message} />
-            <Input label="Amount (USD)"     readonly={true}                   register={register("amount")}  error={errors.amount?.message} type="number" />
-            <Input label="Note (optional)"  placeholder="Additional details"  register={register("note")}    error={errors.note?.message} />
+            <Input
+              type="text"
+              label="Name"
+              name="name"
+              placeholder="John Doe"
+              register={register("name")}
+              error={errors.name?.message}
+            />
+            <Input
+              type="email"
+              name="email"
+              label="Email"
+              placeholder="john@example.com"
+              register={register("email")}
+              error={errors.email?.message}
+            />
+            <Input
+              type="tel"
+              name="phone"
+              label="Phone"
+              placeholder="099 123 4567"
+              register={register("phone")}
+              error={errors.phone?.message}
+            />
+            <Select
+              name="company"
+              label="Company"
+              options={companyOptions}
+              register={register("company")}
+              error={errors.company?.message}
+            />
+            <Select
+              name="service"
+              label="Service"
+              options={serviceOptions}
+              register={register("services")}
+              error={errors.services?.message}
+            />
+            <Input
+              name="amount"
+              label="Amount (USD)"
+              readonly={true}
+              register={register("amount")}
+              error={errors.amount?.message}
+              type="number"
+            />
+            <Input
+              type="text"
+              name="note"
+              label="Note (optional)"
+              placeholder="Additional details"
+              register={register("note")}
+              error={errors.note?.message}
+            />
           </form>
 
           <div className="contact-right">
@@ -227,7 +327,7 @@ const PaymentsPage = () => {
                 const values = getValues();
                 const validation = formSchema.safeParse(values);
                 if (!validation.success) {
-                  alert("Please fill all required fields correctly");
+                  toast.error("Please fill all required fields correctly");
                   throw new Error("Validation failed");
                 }
                 return {
