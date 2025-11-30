@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
 
     const amount = service.price.toFixed(2);
 
-    const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!;
+    const clientId = process.env.PAYPAL_CLIENT_ID!;
     const secret = process.env.PAYPAL_SECRET!;
     const basicAuth = Buffer.from(`${clientId}:${secret}`).toString("base64");
 

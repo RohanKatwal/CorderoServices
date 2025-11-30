@@ -45,19 +45,6 @@ const PaymentsPage = () => {
     }
   }, [selectedServiceValue, setValue]);
 
-  const handleFormSubmit = async (data: PaymentType) => {
-    const res = await fetch("/api/paypal/create-order", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data), // ⭐ send everything
-    });
-
-    const result = await res.json();
-
-    window.location.href = result.links.find(
-      (l: { href: string; rel: string; method: string }) => l.rel === "approve"
-    ).href;
-  };
   return (
     <>
       <Navbar pageName="corderoservices" />
@@ -67,7 +54,7 @@ const PaymentsPage = () => {
           <p>Pagos rápidos y seguros para todos nuestros servicios.</p>
         </div>
         <div className="contact-content">
-          <form className="form" onSubmit={handleSubmit(handleFormSubmit)}>
+          <form className="form">
             <Input
               type="text"
               label="Name"
@@ -133,16 +120,16 @@ const PaymentsPage = () => {
               />
               <PayPalButton
                 getOrderData={() => {
-                  const values = getValues();
+                  const v = getValues();
                   return {
-                    name: values.name || "Anonymous",
-                    email: values.email || "anon@example.com",
-                    phone: values.phone || "",
-                    company: values.company || "",
-                    services: values.services || "",
-                    note: values.note || "",
+                    name: v.name,
+                    email: v.email,
+                    phone: v.phone,
+                    company: v.company,
+                    services: v.services,
+                    note: v.note,
                   };
-                }} // getValues from react-hook-form
+                }}
                 onSuccess={() => {
                   console.log("Payment completed!");
                   // Optional: redirect or reset form
