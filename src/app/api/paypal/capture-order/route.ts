@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
     const captureData = await captureRes.json();
 
     if (captureData.status === "COMPLETED") {
-      console.log("Payment captured:", captureData);
+      //console.log("Payment captured:", captureData);
       
       return NextResponse.json({
         success: true,
