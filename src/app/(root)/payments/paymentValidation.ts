@@ -8,34 +8,26 @@ export const formSchema = z.object({
     .trim(),
 
   email: z
-    .email({ message: "Invalid email address" })
-    .min(1, { message: "Email is required" }),
+    .string()
+    .min(1, { message: "Email is required" })
+    .email({ message: "Invalid email address" }),
 
   phone: z
     .string()
     .min(1, { message: "Phone number is required" })
-    .min(7, { message: "Invalid phone number" })
-    .regex(/^\+?[1-9]\d{1,14}$/, {
-      message: "Phone number must be a valid international format (E.164)",
-    }),
+    .min(7, { message: "Invalid phone number" }),
 
   company: z
     .string()
     .min(1, { message: "Company name is required" })
-    .trim()
-    .refine((val) => val.length > 0, {
-      message: "Company name cannot be empty",
-    }),
+    .trim(),
 
   services: z
     .string()
     .min(1, { message: "Service is required" })
-    .trim()
-    .refine((val) => val.length > 0, {
-      message: "Service cannot be empty",
-    }),
+    .trim(),
 
-  amount: z.number().min(1, { message: "Select a service" }).readonly(),
+  amount: z.number().min(1, { message: "Select a service" }),
 
   note: z.string().optional(),
 });
