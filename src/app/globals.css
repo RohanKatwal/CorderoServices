@@ -241,7 +241,7 @@ button:disabled {
   background-color: white;
   color: black;
   padding: 12px 30px;
-  border-radius: 5px;
+  border-radius: 12px;
   cursor: pointer;
   font-size: 18px;
   font-weight: 600;
@@ -390,13 +390,13 @@ button:disabled {
 }
 
 .company-logo {
-  height: 170px;
+  height: 150px;
   margin: 0 auto 0;
   border-radius: 10px;
 }
 
 .company-logo img {
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 10px;
 }
 
