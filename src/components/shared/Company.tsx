@@ -19,7 +19,7 @@ const Company = () => {
           <div className="company-card">
             <div className="company-logo">
               <Image
-                src="/images/OFFTARQLogo.png"
+                src="/images/offtarq-logo.svg"
                 width={173}
                 height={143}
                 alt="offtarq logo"
@@ -41,7 +41,7 @@ const Company = () => {
           <div className="company-card">
             <div className="company-logo">
               <Image
-                src="/images/ICLogo.png"
+                src="/images/inmo-logo.svg"
                 width={213}
                 height={143}
                 alt="inmobiliaria logo"

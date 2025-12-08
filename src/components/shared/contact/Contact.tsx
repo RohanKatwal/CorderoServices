@@ -307,7 +307,7 @@ const Contact = () => {
             <h4>
               Horario <span className="highlight">Comercial</span>
             </h4>
-            <p>Domingo a viernes: 8:30 AM - 5:30 PM</p>
+            <p>Lunes a Viernes: 8:30 AM - 5:30 PM</p>
             <p>Sábado: Cerrado</p>
             <p>Domingo: Cerrado</p>
           </div>
