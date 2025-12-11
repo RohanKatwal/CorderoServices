@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { pageName } from "./HeroSection";
 
-const Header = () => {
+const Header = ({pageName}: pageName) => {
   return (
     <header className="top-bar">
       <div className="container top-bar-content">
@@ -47,7 +48,7 @@ const Header = () => {
           </Link>
         </div>
         <div className="contact-info">
-          <Link href="mailto:ofttarqcordero@hotmail.com,alexcordero67@hotmail.com">
+          <Link href={"mailto:ofttarqcordero@hotmail.com,alexcordero67@hotmail.com"}>
             <svg
               width="20"
               height="20"
@@ -60,8 +61,7 @@ const Header = () => {
                 fill="black"
               />
             </svg>
-
-            <span>MedicionesCuenca.com</span>
+            <span>{pageName === "corderoservices" ? "corderoservices.com" : "inmobiliaria.com"}</span>
           </Link>
         </div>
         <div className="contact-info">

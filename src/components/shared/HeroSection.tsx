@@ -22,6 +22,11 @@ const HeroSection = ({ pageName }: pageName) => {
             de múltiples empresas. Reunimos innovación, calidad y confianza en
             una plataforma integral.
           </p>
+          {pageName === "inmobiliaria" && (
+            <div className="license-info">
+              <p>LICENCIA PROFESSIONAL: No.ACBRP - 343</p>
+            </div>
+          )}
           <div className="hero-buttons">
             <Link href="#company" className="btn-primary">
               {data.btn1}

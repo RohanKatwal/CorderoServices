@@ -1,6 +1,7 @@
 "use client";
 import Contact from "@/components/shared/contact/Contact";
 import Footer from "@/components/shared/Footer";
+import Header from "@/components/shared/Header";
 import HeroSection from "@/components/shared/HeroSection";
 import { VideoType } from "@/components/shared/modal/VideoModal";
 import Navbar from "@/components/shared/Navbar";
@@ -20,6 +21,7 @@ const InmobiliariaClient = () => {
   }, []);
   return (
     <>
+      <Header pageName="inmobiliaria" />
       <Navbar pageName="inmobiliaria" />
       <HeroSection pageName="inmobiliaria" />
       <Stats pageName="inmobiliaria" />
