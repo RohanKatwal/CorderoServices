@@ -1,6 +1,7 @@
 import Company from "@/components/shared/Company";
 import Contact from "@/components/shared/contact/Contact";
 import Footer from "@/components/shared/Footer";
+import Header from "@/components/shared/Header";
 import HeroSection from "@/components/shared/HeroSection";
 import Navbar from "@/components/shared/Navbar";
 import Stats from "@/components/shared/Stats";
@@ -16,6 +17,7 @@ export const metadata = {
 const HomePage = () => {
   return (
     <>
+      <Header pageName="corderoservices" />
       <Navbar pageName="corderoservices" />
       <HeroSection pageName="corderoservices" />
       <Stats pageName="corderoservices" />

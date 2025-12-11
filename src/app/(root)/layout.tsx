@@ -5,7 +5,6 @@ import { ReactNode } from "react";
 const layout = ({ children }: { children: ReactNode }) => {
   return (
     <main>
-      <Header />
       {children}
       <WhatsappBtn />
     </main>

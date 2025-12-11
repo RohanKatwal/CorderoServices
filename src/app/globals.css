@@ -877,6 +877,18 @@ tbody tr:hover td {
   width: 100%;
 }
 
+.license-info {
+  margin: 28px 0;
+  padding: 24px;
+  background-color: rgba(241, 146, 0, 0.1);
+  border-left: 4px solid #f19200;
+}
+
+.license-info p{
+  margin: 0;
+  color: #f19200;
+}
+
 /* Responsive */
 @media (max-width: 1280px) {
   .container {
