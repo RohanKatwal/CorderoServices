@@ -9,8 +9,9 @@ import Textarea from "../Textarea";
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
+import { pageName } from "../HeroSection";
 
-const Contact = () => {
+const Contact = ({ pageName }: pageName) => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const {
@@ -258,7 +259,14 @@ const Contact = () => {
             </div>
           </div>
           <div className="social">
-            <Link href="https://www.facebook.com/ofttarq">
+            <Link
+              target="_blank"
+              href={
+                pageName === "corderoservices"
+                  ? "https://www.facebook.com/ofttarq"
+                  : "https://www.facebook.com/people/INMO-Cordero/61570584921220"
+              }
+            >
               <svg
                 width="32"
                 height="32"
@@ -272,7 +280,14 @@ const Contact = () => {
                 />
               </svg>
             </Link>
-            <Link href="https://www.instagram.com/ofttarq_cordero/">
+            <Link
+              target="_blank"
+              href={
+                pageName === "corderoservices"
+                  ? "https://www.instagram.com/ofttarq_cordero/"
+                  : "https://www.instagram.com/inmo.cordero?igsh=dmkydGp6bzRxajB4"
+              }
+            >
               <svg
                 width="38"
                 height="38"
@@ -286,7 +301,14 @@ const Contact = () => {
                 />
               </svg>
             </Link>
-            <Link href="https://www.tiktok.com/@alex_cordero67">
+            <Link
+              target="_blank"
+              href={
+                pageName === "corderoservices"
+                  ? "https://www.tiktok.com/@alex_cordero67"
+                  : "https://www.tiktok.com/@inmo.cordero?_r=1&_t=ZM-92AfUf2yLRD"
+              }
+            >
               <svg
                 width="40"
                 height="40"

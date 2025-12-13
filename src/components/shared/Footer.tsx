@@ -136,14 +136,25 @@ const Footer = ({ pageName }: FooterProps) => {
                     />
                   </svg>
                 </div>
-                <Link
-                  target="_blank"
-                  href="mailto:ofttarqcordero@hotmail.com,alexcordero67@hotmail.com"
-                >
-                  alexcordero67@hotmail.com
-                  <br />
-                  ofttarqcordero@hotmail.com
-                </Link>
+                <div>
+                  <Link target="_blank" href="mailto:alexcordero67@hotmail.com">
+                    alexcordero67@hotmail.com
+                  </Link>
+                  <Link
+                    target="_blank"
+                    href={
+                      pageName === "corderoservices"
+                        ? "mailto:cordero.services@hotmail.com"
+                        : "mailto:inmocordero@gmail.com"
+                    }
+                  >
+                    {pageName === "corderoservices" ? (
+                      <>cordero.services@hotmail.com</>
+                    ) : (
+                      <>inmocordero@gmail.com</>
+                    )}
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -151,6 +162,7 @@ const Footer = ({ pageName }: FooterProps) => {
             <h3>Síguenos</h3>
             <div className="s-top">
               <Link
+                target="_blank"
                 href={
                   pageName === "corderoservices"
                     ? "https://www.facebook.com/ofttarq"
@@ -174,7 +186,14 @@ const Footer = ({ pageName }: FooterProps) => {
                   />
                 </svg>
               </Link>
-              <Link href="https://www.instagram.com/ofttarq_cordero/">
+              <Link
+                target="_blank"
+                href={
+                  pageName === "corderoservices"
+                    ? "https://www.instagram.com/ofttarq_cordero/"
+                    : "https://www.instagram.com/inmo.cordero?igsh=dmkydGp6bzRxajB4"
+                }
+              >
                 <svg
                   width="40"
                   height="40"
@@ -218,7 +237,14 @@ const Footer = ({ pageName }: FooterProps) => {
                   </defs>
                 </svg>
               </Link>
-              <Link href="https://www.tiktok.com/@alex_cordero67">
+              <Link
+                target="_blank"
+                href={
+                  pageName === "corderoservices"
+                    ? "https://www.tiktok.com/@alex_cordero67"
+                    : "https://www.tiktok.com/@inmo.cordero?_r=1&_t=ZM-92AfUf2yLRD"
+                }
+              >
                 <svg
                   width="40"
                   height="40"
@@ -234,7 +260,7 @@ const Footer = ({ pageName }: FooterProps) => {
                 </svg>
               </Link>
             </div>
-            <p>Encuéntranos en las redes sociales como OFTTARQ</p>
+            <p>Encuéntranos en las redes sociales como {pageName === "corderoservices" ? "Cordero Services" : "Inmobiliaria"}</p>
           </div>
         </div>
         <hr />

@@ -11,7 +11,7 @@ const Video = ({ title, description, location, url }: VideoType) => {
       <YouTubeCustomPlayer url={url} />
       <div className="description">
         <h4>{title}</h4>
-        <p>{description}</p>
+        {/* <p>{description}</p> */}
       </div>
       <p className="location">
         <span>
