@@ -79,7 +79,7 @@ export const statsContent = {
     {
       id: 3,
       title: "Ventas Totales",
-      value: "$20M+",
+      value: "$500k+",
     },
     {
       id: 4,

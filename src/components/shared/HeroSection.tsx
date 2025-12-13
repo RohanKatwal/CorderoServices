@@ -24,7 +24,7 @@ const HeroSection = ({ pageName }: pageName) => {
           </p>
           {pageName === "inmobiliaria" && (
             <div className="license-info">
-              <p>LICENCIA PROFESSIONAL: No.ACBRP - 343</p>
+              <p>LICENCIA PROFESIONAL: No.ACBRP - 343</p>
             </div>
           )}
           <div className="hero-buttons">

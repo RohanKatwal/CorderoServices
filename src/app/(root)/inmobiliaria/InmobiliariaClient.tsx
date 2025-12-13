@@ -49,7 +49,7 @@ const InmobiliariaClient = () => {
             ))}
         </ul>
       </section>
-      <Contact />
+      <Contact pageName="inmobiliaria" />
       <Footer pageName="inmobiliaria" />
     </>
   );

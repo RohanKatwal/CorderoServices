@@ -22,7 +22,7 @@ const HomePage = () => {
       <HeroSection pageName="corderoservices" />
       <Stats pageName="corderoservices" />
       <Company />
-      <Contact />
+      <Contact pageName="corderoservices" />
       <Footer pageName="corderoservices" />
     </>
   );
