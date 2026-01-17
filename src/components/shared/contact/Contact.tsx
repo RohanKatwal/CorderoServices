@@ -10,10 +10,14 @@ import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { pageName } from "../HeroSection";
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 const Contact = ({ pageName }: pageName) => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -29,8 +33,18 @@ const Contact = ({ pageName }: pageName) => {
     },
   });
 
+  const onCaptchaChange = (token: string | null) => {
+    setCaptchaToken(token);
+  };
+
+
   const handleContactSubmit = async (data: ContactType) => {
     if (!formRef.current) return;
+    if (!captchaToken) {
+      toast.error("Please verify that you are not a robot.");
+      return;
+    }
+
 
     if (
       !process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID ||
@@ -52,6 +66,9 @@ const Contact = ({ pageName }: pageName) => {
       toast.success("Message sent successfully!");
 
       reset();
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
+
     } catch (error) {
       console.log(error);
       toast.error("Failed to send message!");
@@ -108,6 +125,14 @@ const Contact = ({ pageName }: pageName) => {
             error={errors.message?.message}
             register={register("message")}
           />
+          <div style={{  marginBottom: "16px" }}>
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+              onChange={onCaptchaChange}
+            />
+          </div>
+
           <button
             type="submit"
             disabled={loading}
