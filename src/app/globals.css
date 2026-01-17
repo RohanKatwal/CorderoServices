@@ -1,9 +1,11 @@
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   font-family: var(--font-inter);
+  scroll-behavior: smooth;
+  scroll-padding-top: 116px;
 }
+
+@import "tailwindcss";
 
 /* Base Styles */
 body {
@@ -194,6 +196,7 @@ button {
   cursor: pointer;
   background: none;
   border: none;
+  white-space: nowrap;
 }
 
 button:disabled {
@@ -211,6 +214,7 @@ button:disabled {
   border-radius: 12px;
   font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -230,6 +234,7 @@ button:disabled {
   text-decoration: none;
   display: inline-block;
   transition: all 0.3s;
+  white-space: nowrap;
 }
 
 .btn-secondary:hover {
@@ -302,7 +307,7 @@ button:disabled {
 
 /* Stats Section */
 .stats {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: #ffffff0d;
   padding: 48px 0;
   margin-top: 80px;
 }
@@ -391,7 +396,8 @@ button:disabled {
 
 .company-logo {
   height: 170px;
-  margin: 0 auto 0;
+  display: grid;
+  place-content: center;
   border-radius: 10px;
 }
 
@@ -522,7 +528,7 @@ button:disabled {
   align-items: center;
   gap: 16px;
   padding: 16px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #ffffff1a;
   border-radius: 8px;
 }
 
@@ -884,7 +890,7 @@ tbody tr:hover td {
   border-left: 4px solid #f19200;
 }
 
-.license-info p{
+.license-info p {
   margin: 0;
   color: #f19200;
 }

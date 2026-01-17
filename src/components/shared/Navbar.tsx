@@ -43,19 +43,23 @@ const Navbar = ({ pageName }: pageName) => {
       <div className="container navbar-content">
         <div className="logo">
           {pageName === "corderoservices" ? (
-            <Image
-              src="/images/cordero-logo.svg"
-              width={120}
-              height={65}
-              alt="logo"
-            />
+            <Link href="/">
+              <Image
+                src="/images/cordero-logo.svg"
+                width={120}
+                height={65}
+                alt="logo"
+              />
+            </Link>
           ) : (
-            <Image
-              src="/images/inmo-logo.svg"
-              width={105}
-              height={78}
-              alt="logo"
-            />
+            <Link href="/inmobiliaria">
+              <Image
+                src="/images/inmo-logo.svg"
+                width={105}
+                height={78}
+                alt="logo"
+              />
+            </Link>
           )}
         </div>
         <div onClick={handleMenu} className="menu-toggle">
@@ -140,6 +144,7 @@ const Navbar = ({ pageName }: pageName) => {
               </Link>
               {showServices && (
                 <div className="services-dropdown">
+                  <Link href={"/erp-consulting"}>Erp Consulting</Link>
                   {services &&
                     services.length > 0 &&
                     services.map((item) => <p key={item.id}>{item.title}</p>)}

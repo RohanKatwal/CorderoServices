@@ -14,7 +14,12 @@ const HeroSection = ({ pageName }: pageName) => {
         <div className="hero-text">
           <h1>
             {data.title}
-            {pageName === "corderoservices" && (<><br/>Cordero</>)}
+            {pageName === "corderoservices" && (
+              <>
+                <br />
+                Cordero
+              </>
+            )}
             {data.highlight && <span className="highlight"> Services </span>}
           </h1>
           <p>
@@ -38,12 +43,7 @@ const HeroSection = ({ pageName }: pageName) => {
           </div>
         </div>
         <div className="hero-image">
-          <Image
-            src={data.img}
-            width={402}
-            height={510}
-            alt="hero-img"
-          />
+          <Image src={data.img} width={402} height={510} alt="hero-img" />
         </div>
       </div>
     </section>

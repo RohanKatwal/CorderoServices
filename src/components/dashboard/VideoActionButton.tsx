@@ -1,4 +1,4 @@
-import VideoModal, { VideoType } from "../modal/VideoModal";
+import VideoModal, { VideoType } from "../shared/modal/VideoModal";
 
 interface VideoActionButtonProps {
   video: VideoType;

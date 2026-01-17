@@ -17,7 +17,7 @@ export const navLinks = [
     external: true,
   },
   {
-    id: 4,
+    id: 5,
     title: "CONTÁCTANOS",
     slug: "#contact",
   },
@@ -103,7 +103,6 @@ export const companyOptions = [
     value: "other",
   },
 ];
-
 
 export const serviceOptions = [
   {

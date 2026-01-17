@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getVideos, deleteVideo } from "@/lib/actions/firebaseVideos";
-import VideoModal, { VideoType } from "../modal/VideoModal";
+import VideoModal, { VideoType } from "../shared/modal/VideoModal";
 import VideoActionButton from "./VideoActionButton";
 import { toast } from "react-toastify";
 
@@ -24,8 +24,8 @@ const DashboardVideos = () => {
   const handleDelete = async (id: string) => {
     try {
       const { message, error } = await deleteVideo(id);
-      if (error) return toast.error(error)
-      toast.success(message)
+      if (error) return toast.error(error);
+      toast.success(message);
       fetchVideos();
     } catch (err) {
       alert("Failed to delete video");
