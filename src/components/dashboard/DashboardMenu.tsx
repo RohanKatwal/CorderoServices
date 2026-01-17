@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getMenus } from "@/lib/actions/firebaseMenu";
-import MenuModal, { MenuType } from "../modal/MenuModal";
+import MenuModal, { MenuType } from "../shared/modal/MenuModal";
 import MenuActionButton from "./MenuActionButton";
 import { formattedDate } from "@/lib/utils";
 
