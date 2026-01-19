@@ -17,6 +17,11 @@ export const navLinks = [
     external: true,
   },
   {
+    id: 4,
+    title: "ERP CONSULTING  ",
+    slug: "/erp-consulting",
+  },
+  {
     id: 5,
     title: "CONTÁCTANOS",
     slug: "#contact",
