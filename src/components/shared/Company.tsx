@@ -60,6 +60,25 @@ const Company = () => {
             </Link>
           </div>
 
+          <div className="company-card">
+            <div className="company-logo">
+              <Image
+                src="/images/erp.png"
+                width={150}
+                height={150}
+                alt="inmobiliaria logo"
+              />
+            </div>
+            <h2>ERP Consulting</h2>
+            <p>
+              Consultoría ERP integral enfocada en la entrega de servicios,
+              optimización de sistemas, gobernanza y capacitación de usuarios.
+            </p>
+            <Link href="/erp-consulting" className="btn-primary">
+              Aprende Más..
+            </Link>
+          </div>
+
           <div className="company-card coming-soon">
             <div className="company-logo">
               <svg

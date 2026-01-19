@@ -11,14 +11,14 @@ const platforms = [
     name: "IFS",
     category: "Enterprise Asset Management",
     description:
-      "Hands-on expertise with IFS applications, particularly in asset-intensive industries requiring integrated enterprise resource planning.",
+      "Hands-on expertise with IFS applications, particularly in asset-intensive industries requiring integrated enterprise resource planning, IALs, Lobbies.",
   },
   {
     image: "/images/people-soft.png",
     name: "PeopleSoft",
     category: "Enterprise Suite",
     description:
-      "Deep familiarity with PeopleSoft environments across HR, finance, and campus solutions modules.",
+      "Deep familiarity with PeopleSoft environments across HR, finance, campus solutions modules, and PeopleTools.",
   },
 ];
 

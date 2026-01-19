@@ -130,7 +130,7 @@ const Contact = ({ pageName }: pageName) => {
               ref={recaptchaRef}
               sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
               onChange={onCaptchaChange}
-            />
+            /> 
           </div>
 
           <button

@@ -144,7 +144,6 @@ const Navbar = ({ pageName }: pageName) => {
               </Link>
               {showServices && (
                 <div className="services-dropdown">
-                  <Link href={"/erp-consulting"}>Erp Consulting</Link>
                   {services &&
                     services.length > 0 &&
                     services.map((item) => <p key={item.id}>{item.title}</p>)}

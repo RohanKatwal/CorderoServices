@@ -16,7 +16,6 @@ const ERPPage = () => {
       <OverviewSection />
       <CapabilitiesSection />
       <PlatformsSection />
-      <Contact pageName="corderoservices" />
       <Footer pageName="corderoservices" />
     </>
   );
