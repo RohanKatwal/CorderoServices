@@ -270,7 +270,7 @@ const Footer = ({ pageName }: FooterProps) => {
         <hr />
         <div className="bottom">
           <p>
-            © 2025 {isERPPage ? "CORDERO SERVICES" : "OFTTARQ - Arq. Alexandra Cordero"}. Todos los derechos
+            © 2025 {isCorderoServices ? "CORDERO SERVICES" : "OFTTARQ - Arq. Alexandra Cordero"}. Todos los derechos
             reservados.
           </p>
           <div>
