@@ -1,10 +1,12 @@
 import Link from "next/link";
 
 interface FooterProps {
-  pageName: "corderoservices" | "inmobiliaria";
+  pageName: "corderoservices" | "inmobiliaria" | "erp";
 }
 
 const Footer = ({ pageName }: FooterProps) => {
+  const isERPPage = pageName === "erp";
+  const isCorderoServices = pageName === "corderoservices" || isERPPage;
   return (
     <footer className="footer">
       <div className="container">
@@ -137,18 +139,20 @@ const Footer = ({ pageName }: FooterProps) => {
                   </svg>
                 </div>
                 <div>
-                  <Link target="_blank" href="mailto:alexcordero67@hotmail.com">
-                    alexcordero67@hotmail.com
-                  </Link>
+                  {!isERPPage && (
+                    <Link target="_blank" href="mailto:alexcordero67@hotmail.com">
+                      alexcordero67@hotmail.com
+                    </Link>
+                  )}
                   <Link
                     target="_blank"
                     href={
-                      pageName === "corderoservices"
+                      isCorderoServices
                         ? "mailto:cordero.services@hotmail.com"
                         : "mailto:inmocordero@gmail.com"
                     }
                   >
-                    {pageName === "corderoservices" ? (
+                    {isCorderoServices ? (
                       <>cordero.services@hotmail.com</>
                     ) : (
                       <>inmocordero@gmail.com</>
@@ -266,7 +270,7 @@ const Footer = ({ pageName }: FooterProps) => {
         <hr />
         <div className="bottom">
           <p>
-            © 2025 OFTTARQ - Arq. Alexandra Cordero. Todos los derechos
+            © 2025 {isERPPage ? "CORDERO SERVICES" : "OFTTARQ - Arq. Alexandra Cordero"}. Todos los derechos
             reservados.
           </p>
           <div>
