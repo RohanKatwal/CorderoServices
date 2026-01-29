@@ -33,7 +33,7 @@ const PlatformsSection = () => {
           </h1>
           <p className="font-body text-lg text-muted-foreground leading-relaxed mb-10">
             Our consultants bring direct, hands-on experience with leading
-            enterprise platforms—not theoretical knowledge, but practical
+            enterprise platforms not theoretical knowledge, but practical
             expertise gained from real implementations.
           </p>
 

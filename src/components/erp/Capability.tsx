@@ -61,7 +61,7 @@ const capabilities = [
     ),
     title: "Stakeholder Liaison",
     description:
-      "Acting as the critical bridge between business stakeholders and technical teams—translating requirements, managing expectations, and ensuring alignment.",
+      "Acting as the critical bridge between business stakeholders and technical teams, translating requirements, managing expectations, and ensuring alignment.",
   },
   {
     icon: (
@@ -186,7 +186,7 @@ const CapabilitiesSection = () => {
         </h1>
         <p className="font-body text-lg text-muted-foreground leading-relaxed">
           We deliver practical ERP expertise across the full spectrum of
-          enterprise system management—from strategic planning to hands-on
+          enterprise system management from strategic planning to hands-on
           execution.
         </p>
       </div>

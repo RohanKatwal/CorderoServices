@@ -27,7 +27,7 @@ const ERPHero = () => {
             style={{ animationDelay: "0.3s" }}
           >
             Strategic ERP service delivery, system optimization, and
-            business-technology alignment for enterprises ready to maximize
+            business technology alignment for enterprises ready to maximize
             their platform investments.
           </p>
 

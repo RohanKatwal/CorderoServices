@@ -10,8 +10,8 @@ const OverviewSection = () => {
             <div className="space-y-5 font-body text-muted-foreground leading-relaxed">
               <p className="text-lg">
                 CorderoServices partners with organizations to strengthen their
-                ERP ecosystems—translating complex business requirements into
-                practical, well-executed technical solutions.
+                ERP ecosystems, translating complex business requirements into
+                practical, well executed technical solutions.
               </p>
               <p>
                 We operate at the intersection of business operations and
