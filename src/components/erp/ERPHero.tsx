@@ -47,7 +47,9 @@ const ERPHero = () => {
             </Link>
           </div>
         </div>
-        <div className="hero-image"></div>
+        <div className="hero-image">
+          <img src="/images/data-flow-graphic.png" width={452} height={574} alt="hero-img" />
+        </div>
       </div>
     </section>
   );
