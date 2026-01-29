@@ -274,8 +274,8 @@ const Footer = ({ pageName }: FooterProps) => {
             reservados.
           </p>
           <div>
-            <Link href="">Privacidad</Link>
-            <Link href="">Términos</Link>
+            <Link href="/privacy-policy">Privacidad</Link>
+            <Link href="terms-and-condition">Términos</Link>
           </div>
         </div>
       </div>

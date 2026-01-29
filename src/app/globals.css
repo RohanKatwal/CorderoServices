@@ -7,6 +7,10 @@
 
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #f19200;
+}
+
 /* Base Styles */
 body {
   background-color: #000;
