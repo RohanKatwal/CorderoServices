@@ -60,7 +60,7 @@ const Footer = ({ pageName }: FooterProps) => {
                   Planta Alta (frente al Teatro Casa de la Cultura)
                 </Link>
               </div>
-              <div className="info">
+              {/* <div className="info">
                 <div>
                   <svg
                     width="24"
@@ -93,7 +93,7 @@ const Footer = ({ pageName }: FooterProps) => {
                   <br />
                   Calle Daniel Durán a 1 cuadra del Mercado de Ricaurte
                 </Link>
-              </div>
+              </div> */}
               <div className="info">
                 <div>
                   <svg
@@ -140,7 +140,10 @@ const Footer = ({ pageName }: FooterProps) => {
                 </div>
                 <div>
                   {!isERPPage && (
-                    <Link target="_blank" href="mailto:alexcordero67@hotmail.com">
+                    <Link
+                      target="_blank"
+                      href="mailto:alexcordero67@hotmail.com"
+                    >
                       alexcordero67@hotmail.com
                     </Link>
                   )}
@@ -264,14 +267,22 @@ const Footer = ({ pageName }: FooterProps) => {
                 </svg>
               </Link>
             </div>
-            <p>Encuéntranos en las redes sociales como {pageName === "corderoservices" ? "Cordero Services" : "Inmobiliaria"}</p>
+            <p>
+              Encuéntranos en las redes sociales como{" "}
+              {pageName === "corderoservices"
+                ? "Cordero Services"
+                : "Inmobiliaria"}
+            </p>
           </div>
         </div>
         <hr />
         <div className="bottom">
           <p>
-            © 2025 {isCorderoServices ? "CORDERO SERVICES" : "OFTTARQ - Arq. Alexandra Cordero"}. Todos los derechos
-            reservados.
+            © 2025{" "}
+            {isCorderoServices
+              ? "CORDERO SERVICES"
+              : "OFTTARQ - Arq. Alexandra Cordero"}
+            . Todos los derechos reservados.
           </p>
           <div>
             <Link href="/privacy-policy">Privacidad</Link>

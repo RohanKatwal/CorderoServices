@@ -195,7 +195,7 @@ const Contact = ({ pageName }: pageName) => {
                 Planta Alta (frente al Teatro Casa de la Cultura)
               </Link>
             </div>
-            <div className="info">
+            {/* <div className="info">
               <div>
                 <svg
                   width="24"
@@ -228,7 +228,7 @@ const Contact = ({ pageName }: pageName) => {
                 <br />
                 Calle Daniel Durán a 1 cuadra del Mercado de Ricaurte
               </Link>
-            </div>
+            </div> */}
             <div className="info">
               <div>
                 <svg
