@@ -61,7 +61,7 @@ const Header = ({pageName}: pageName) => {
                 fill="black"
               />
             </svg>
-            <span>{pageName === "corderoservices" ? "corderoservices.com" : "inmobiliaria.com"}</span>
+            <span>{pageName === "corderoservices" ? "corderoservices.com" : "inmocodero.com"}</span>
           </Link>
         </div>
         <div className="contact-info">

@@ -6,14 +6,14 @@ export const navLinks = [
   },
   {
     id: 2,
-    title: "OFFTARQ",
+    title: "OFTTARQ",
     slug: "https://www.medicionescuenca.com/",
     external: true,
   },
   {
     id: 3,
-    title: "INMOBILIARIA",
-    slug: "/inmobiliaria",
+    title: "INMO CODERO",
+    slug: "/inmo-codero",
     external: true,
   },
   {
@@ -121,8 +121,8 @@ export const serviceOptions = [
     price: 200,
   },
   {
-    label: "Desalloros Digitales",
-    value: "desalloros digitales",
+    label: "Desarrollo Digitales",
+    value: "desarrollo digitales",
     price: 250,
   },
 ];

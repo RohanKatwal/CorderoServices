@@ -271,7 +271,7 @@ const Footer = ({ pageName }: FooterProps) => {
               Encuéntranos en las redes sociales como{" "}
               {pageName === "corderoservices"
                 ? "Cordero Services"
-                : "Inmobiliaria"}
+                : "Inmo Codero"}
             </p>
           </div>
         </div>
