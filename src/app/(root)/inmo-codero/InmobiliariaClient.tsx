@@ -28,7 +28,7 @@ const InmobiliariaClient = () => {
       <section className="videos-wrapper container">
         <div className="heading">
           <h1>
-            Nuestros Destacados <span className="highlight">Inmobiliarios</span>
+            Nuestros Destacados <span className="highlight">Inmo Cordero</span>
           </h1>
           <p>
             Explora nuestros últimos destacados de propiedades y proyectos a

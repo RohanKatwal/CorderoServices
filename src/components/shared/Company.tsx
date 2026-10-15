@@ -53,7 +53,7 @@ const Company = () => {
               propiedades soñadas y coordinamos las oportunidades de inversión.
             </p>
             <Link
-              href="https://corderoservices.vercel.app/inmobiliaria"
+              href="https://corderoservices.vercel.app/inmo-codero"
               className="btn-primary"
             >
               Aprende Más..

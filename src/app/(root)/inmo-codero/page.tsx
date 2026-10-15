@@ -1,7 +1,7 @@
 import InmobiliariaClient from "./InmobiliariaClient";
 
 export const metadata = {
-  title: "Inmobiliaria",
+  title: "Inmo Codero",
   icons: {
     icon: "/images/inmo-logo.ico",
   },

@@ -52,7 +52,7 @@ const Navbar = ({ pageName }: pageName) => {
               />
             </Link>
           ) : (
-            <Link href="/inmobiliaria">
+            <Link href="/inmo-codero">
               <Image
                 src="/images/inmo-logo.svg"
                 width={105}
